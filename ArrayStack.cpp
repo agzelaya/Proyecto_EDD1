@@ -2,8 +2,7 @@
 
 #define NULL 0
 
-ArrayStack::ArrayStack()
-{
+ArrayStack::ArrayStack(){
 	this->size=0;
 	capacidad = 10;
 	array = new Object*[capacidad];
@@ -11,8 +10,7 @@ ArrayStack::ArrayStack()
 		array[i] = NULL;
 }
 
-ArrayStack::~ArrayStack()
-{
+ArrayStack::~ArrayStack(){
 		//libera el contenido de las casillas
 	for(int i=0; i<this->size; i++){
 		if(array[i]){
@@ -21,4 +19,28 @@ ArrayStack::~ArrayStack()
 	}
 	//libera el arreglo
 	delete[] array;
+}
+
+void ArrayStack::anula() {
+
+}
+
+Object* ArrayStack::tope() {
+
+}
+
+void ArrayStack::mete(Object*) { //push
+
+}
+
+Object* ArrayStack::saca() { //pop
+
+}
+
+bool ArrayStack::vacia() {
+
+}
+
+void ArrayStack::imprime_pila() {
+
 }

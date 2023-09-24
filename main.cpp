@@ -138,8 +138,7 @@ int main(int argc, char** argv) {
 			break;
 		}
 
-
-		//pilas
+		//Pilas
 		case 2: {
 			int tipo;
 			bool inLoop = true;
@@ -148,10 +147,10 @@ int main(int argc, char** argv) {
 				tipo = menuTipoPila();
 				if (tipo == 1 || tipo == 2) {
 					if (tipo == 1) {
-						//*TDACola pila = new ArrayStack();
+						//*TDAPila pila = new ArrayStack();
 					}
 					else {
-						//*TDACola pila = new LinkedStack();
+						//*TDAPila pila = new LinkedStack();
 					}
 
 					int opcPila = menuOpcPila();
