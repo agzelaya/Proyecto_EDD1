@@ -69,7 +69,7 @@ int main(int argc, char** argv) {
 	//
 	//type_info(*lista).name(); 
 	////usar
-	
+
 	//delete lista;
 
 	int opc = 0;
@@ -80,50 +80,19 @@ int main(int argc, char** argv) {
 
 		//Listas
 		case 1: {
-			int tipo = menuTipoLista();
-			while (tipo != 3){
-				switch (tipo) {
-					// case arrayList
-				case 1: {
-					int opcLista = menuOpcLista();
-					while (opcLista != 10) {
-							switch (opcLista) {
-							case 1: {
-								break;
-							}
-							case 2: {
-								break;
-							}
-							case 3: {
-								break;
-							}
-							case 4: {
-								break;
-							}
-							case 5: {
-								break;
-							}
-							case 6: {
-								break;
-							}
-							case 7: {
-								break;
-							}
-							case 8: {
-								break;
-							}
-							case 9: {
-								break;
-							}
-							default: {cout << "\nOpción no valida\n"; }
-							}
-						opcLista = menuOpcLista();
-					}
-					break;
-				}
+			int tipo;
+			bool inLoop = true;
 
-				 //case linked list
-				case 2: {
+			while (inLoop) {
+				tipo = menuTipoLista();
+				if (tipo == 1 || tipo == 2) {
+					if (tipo == 1) {
+						//*TDALista lista = new ArrayList();
+					}
+					else {
+						//*TDACola lista = new LinkedList();
+					}
+
 					int opcLista = menuOpcLista();
 					while (opcLista != 10) {
 						switch (opcLista) {
@@ -158,51 +127,33 @@ int main(int argc, char** argv) {
 						}
 						opcLista = menuOpcLista();
 					}
-					break;
 				}
-				default: {cout << "\nOpción no valida\n"; }
+				else if (tipo == 3) {
+					inLoop = false;
 				}
-				tipo = menuTipoLista();
+				else if (tipo > 3) {
+					cout << "\nOpción no valida\n";
+				}
 			}
 			break;
 		}
 
+
+		//pilas
 		case 2: {
-			int tipo = menuTipoPila();
-			while (tipo != 3) {
-				switch (tipo) {
-				//case arraystack
-				case 1: {
-					int opcPila = menuOpcPila();
-					while (opcPila != 7) {
-						switch (opcPila) {
-						case 1: {
-							break;
-						}
-						case 2: {
-							break;
-						}
-						case 3: {
-							break;
-						}
-						case 4: {
-							break;
-						}
-						case 5: {
-							break;
-						}
-						case 6: {
-							break;
-						}
-						default: {cout << "\nOpción no valida\n"; }
-							  
-						}
-						opcPila = menuOpcPila();
+			int tipo;
+			bool inLoop = true;
+
+			while (inLoop) {
+				tipo = menuTipoPila();
+				if (tipo == 1 || tipo == 2) {
+					if (tipo == 1) {
+						//*TDACola pila = new ArrayStack();
 					}
-					break;
-				}
-				//case linkedstack
-				case 2: {
+					else {
+						//*TDACola pila = new LinkedStack();
+					}
+
 					int opcPila = menuOpcPila();
 					while (opcPila != 7) {
 						switch (opcPila) {
@@ -227,88 +178,74 @@ int main(int argc, char** argv) {
 						default: {cout << "\nOpción no valida\n"; }
 
 						}
-						opcPila = menuOpcPila();
+						opcPila = menuOpcCola();
 					}
-					break;
-				}  
-				default: {cout << "\nOpción no valida\n"; }
 				}
-			tipo = menuTipoPila();
+				else if (tipo == 3) {
+					inLoop = false;
+				}
+				else if (tipo > 3) {
+					cout << "\nOpción no valida\n";
+				}
 			}
 			break;
 		}
+
+			  //colas
 		case 3: {
-			int tipo = menuTipoCola();
-			while (tipo != 3) {
-				switch (tipo) {
-				case 1: {
-					int opcCola = menuOpcCola();
-					while (opcCola != 7) {
-						switch (opcCola) {
-						case 1: {
-							break;
-						}
-						case 2: {
-							break;
-						}
-						case 3: {
-							break;
-						}
-						case 4: {
-							break;
-						}
-						case 5: {
-							break;
-						}
-						case 6: {
-							break;
-						}
-						default: {cout << "\nOpción no valida\n"; }
+			int tipo;
+			bool inLoop = true;
 
-						}
-						opcCola = menuOpcCola();
-					}
-					break;
-				}
-				case 2: {
-					int opcCola = menuOpcCola();
-					while (opcCola != 7) {
-						switch (opcCola) {
-						case 1: {
-							break;
-						}
-						case 2: {
-							break;
-						}
-						case 3: {
-							break;
-						}
-						case 4: {
-							break;
-						}
-						case 5: {
-							break;
-						}
-						case 6: {
-							break;
-						}
-						default: {cout << "\nOpción no valida\n"; }
-
-						}
-						opcCola = menuOpcCola();
-					}
-					break;
-				}
-				default: {cout << "\nOpción no valida\n"; }
-				}
+			while (inLoop) {
 				tipo = menuTipoCola();
+				if (tipo == 1 || tipo == 2) {
+					if (tipo == 1) {
+						//*TDACola cola = new ArrayQueue();
+					}
+					else {
+						//*TDACola cola = new LinkedQueue();
+					}
+
+					int opcCola = menuOpcCola();
+					while (opcCola != 7) {
+						switch (opcCola) {
+						case 1: {
+							break;
+						}
+						case 2: {
+							break;
+						}
+						case 3: {
+							break;
+						}
+						case 4: {
+							break;
+						}
+						case 5: {
+							break;
+						}
+						case 6: {
+							break;
+						}
+						default: {cout << "\nOpción no valida\n"; }
+
+						}
+						opcCola = menuOpcCola();
+					}
+				}
+				else if (tipo == 3) {
+					inLoop = false;
+				}
+				else if (tipo > 3) {
+					cout << "\nOpción no valida\n";
+				}
 			}
 			break;
 		}
-		case 4: {break;}
+		case 4: {break; }
 		default: {cout << "\nOpción no valida\n"; }
 		}
 	}
-	
+
 	return 0;
 }
