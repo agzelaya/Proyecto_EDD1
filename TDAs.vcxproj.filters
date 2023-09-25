@@ -54,6 +54,9 @@
     <ClCompile Include="TDAPila.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Simbolo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ArrayList.h">
@@ -90,6 +93,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="TDAPila.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Simbolo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

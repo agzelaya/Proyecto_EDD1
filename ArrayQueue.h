@@ -21,7 +21,7 @@ class ArrayQueue : public TDACola
 		//Queue
 		virtual void pone_en_cola(Object*);
 		
-		//virtual bool vacia();
+		virtual bool isEmpty();
 
 	protected:
 		int front;

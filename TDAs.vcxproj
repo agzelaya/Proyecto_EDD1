@@ -108,6 +108,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Nodo.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Simbolo.cpp" />
     <ClCompile Include="TDACola.cpp" />
     <ClCompile Include="TDALista.cpp" />
     <ClCompile Include="TDAPila.cpp" />
@@ -122,6 +123,7 @@
     <ClInclude Include="LinkedStack.h" />
     <ClInclude Include="Nodo.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="Simbolo.h" />
     <ClInclude Include="TDACola.h" />
     <ClInclude Include="TDALista.h" />
     <ClInclude Include="TDAPila.h" />

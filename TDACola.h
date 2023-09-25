@@ -19,7 +19,7 @@ class TDACola
 		//Queue
 		virtual void pone_en_cola(Object*)=0;
 		
-		virtual bool vacia()=0;
+		virtual bool isEmpty()=0;
 	protected:
 };
 

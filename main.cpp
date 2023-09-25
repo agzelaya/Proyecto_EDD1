@@ -2,9 +2,14 @@
 #include <windows.h>
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
-#include "TDALista.h"
+
 #include "ArrayList.h"
 #include "LinkedList.h"
+#include "TDALista.h"
+#include "ArrayQueue.h"
+#include "LinkedQueue.h"
+#include "ArrayStack.h"
+#include "LinkedStack.h"
 using namespace std;
 
 int mainMenu() {
@@ -87,10 +92,10 @@ int main(int argc, char** argv) {
 				tipo = menuTipoLista();
 				if (tipo == 1 || tipo == 2) {
 					if (tipo == 1) {
-						//*TDALista lista = new ArrayList();
+						//TDALista* lista = new ArrayList();
 					}
 					else {
-						//*TDACola lista = new LinkedList();
+						//TDALista* lista = new LinkedList();
 					}
 
 					int opcLista = menuOpcLista();
@@ -147,37 +152,38 @@ int main(int argc, char** argv) {
 				tipo = menuTipoPila();
 				if (tipo == 1 || tipo == 2) {
 					if (tipo == 1) {
-						//*TDAPila pila = new ArrayStack();
-						do {
-							switch (menuOpcPila()) {
-							case 1: {
-								break;
-							}
-							case 2: {
-								break;
-							}
-							case 3: {
-								break;
-							}
-							case 4: {
-								break;
-							}
-							case 5: {
-								break;
-							}
-							case 6: {
-								break;
-							}
-							default: {cout << "\nOpción no valida\n"; }
-
-							}
-						} while (menuOpcPila() != 7);
+						//TDAPila* pila = new ArrayStack();
 					}
 					else {
-						//*TDAPila pila = new LinkedStack();
+						//TDAPila* pila = new LinkedStack();
 					}
 
-					 
+					int opcPila = menuOpcPila();
+					while (opcPila != 7) {
+						switch (opcPila) {
+						case 1: {
+							break;
+						}
+						case 2: {
+							break;
+						}
+						case 3: {
+							break;
+						}
+						case 4: {
+							break;
+						}
+						case 5: {
+							break;
+						}
+						case 6: {
+							break;
+						}
+						default: {cout << "\nOpción no valida\n"; }
+
+						}
+						opcPila = menuOpcPila();
+					}
 				}
 				else if (tipo == 3) {
 					inLoop = false;
@@ -198,10 +204,10 @@ int main(int argc, char** argv) {
 				tipo = menuTipoCola();
 				if (tipo == 1 || tipo == 2) {
 					if (tipo == 1) {
-						//*TDACola cola = new ArrayQueue();
+						TDACola* cola = new ArrayQueue();
 					}
 					else {
-						//*TDACola cola = new LinkedQueue();
+						//TDACola* cola = new LinkedQueue();
 					}
 
 					int opcCola = menuOpcCola();
