@@ -5,11 +5,11 @@ Simbolo::Simbolo(char data){
 }
 
 Simbolo::~Simbolo(){
-	delete data;
+	data = NULL;
 }
 
 bool Simbolo::equals(Object* objeto){
-	Simbolo* temp = dynamyc_cast<Simbolo*>(objeto);
+	Simbolo* temp = dynamic_cast<Simbolo*>(objeto);
 	if (this->data == temp->data)
 		return true;
 	else
@@ -17,6 +17,7 @@ bool Simbolo::equals(Object* objeto){
 }
 
 string Simbolo::toString(){
-	string text = data;
+	string text = "";
+	text += data;
 	return text;
 }

@@ -1,15 +1,12 @@
-#ifndef OBJECT_H
-#define OBJECT_H
-
+#pragma once
+#include <iostream>
 #include <string>
-using std::string;
+using namespace std;
 
 class Object{
 	public:
 		virtual bool equals(Object*)=0;
 		virtual string toString()=0;
 		
-	protected:
+	//protected:
 };
-
-#endif

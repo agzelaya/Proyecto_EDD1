@@ -1,7 +1,7 @@
-#ifndef ARRAYQUEUE_H
-#define ARRAYQUEUE_H
+#pragma once
 
 #include "TDACola.h"
+#include "Alumno.h";
 
 class ArrayQueue : public TDACola
 {
@@ -30,5 +30,3 @@ class ArrayQueue : public TDACola
 		int back;
 		Object** array;
 };
-
-#endif

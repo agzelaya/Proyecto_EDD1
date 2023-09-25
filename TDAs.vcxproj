@@ -98,10 +98,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Alumno.cpp" />
     <ClCompile Include="ArrayList.cpp" />
     <ClCompile Include="ArrayQueue.cpp" />
     <ClCompile Include="ArrayStack.cpp" />
-    <ClCompile Include="Char.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="LinkedQueue.cpp" />
     <ClCompile Include="LinkedStack.cpp" />
@@ -114,6 +114,7 @@
     <ClCompile Include="TDAPila.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Alumno.h" />
     <ClInclude Include="ArrayList.h" />
     <ClInclude Include="ArrayQueue.h" />
     <ClInclude Include="ArrayStack.h" />

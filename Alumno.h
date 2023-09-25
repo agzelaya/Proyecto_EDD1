@@ -1,18 +1,12 @@
-#ifndef ALUMNO_H
-#define AlUMNO_H
-#include "iostream"
+#pragma once
 #include "Object.h"
 
-class Alumno : public Object
-{
+class Alumno : public Object {
 public:
-	Alumno(string nombre, string id);
+	Alumno(string, string);
 	~Alumno();
 	virtual bool equals(Object*);
 	virtual string toString();
 protected:
-	string nombre, id; 
-
+	string nombre, id;
 };
-#endif
-

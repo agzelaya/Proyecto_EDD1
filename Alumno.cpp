@@ -1,19 +1,21 @@
 #include "Alumno.h"
 
-Alumno::Alumno(std::string nombre, std::string id){
+Alumno::Alumno(string nombre, string id) {
 	this->id = id;
 	this->nombre = nombre;
 }
 
-Alumno::~Alumno(){
+bool Alumno::equals(Object* objeto) {
+	Alumno* otro = dynamic_cast<Alumno*>(objeto);
+	return (this->id == otro->id);
+}
+
+string Alumno::toString() {
+	return id + " : " + nombre + " ";
+}
+
+
+Alumno::~Alumno() {
 	nombre = "";
 	id = "";
-}
-
-bool Alumno::equals(Object* objeto){
-	return false;
-}
-
-string Alumno::toString(){
-	return "|"+id + " - " + nombre+"|";
 }

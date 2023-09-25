@@ -1,5 +1,6 @@
 #include <iostream>
 #include <windows.h>
+#include <string>
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 
@@ -10,6 +11,7 @@
 #include "LinkedQueue.h"
 #include "ArrayStack.h"
 #include "LinkedStack.h"
+#include "Alumno.h"
 using namespace std;
 
 int mainMenu() {
@@ -199,36 +201,60 @@ int main(int argc, char** argv) {
 		case 3: {
 			int tipo;
 			bool inLoop = true;
-
+			TDACola* cola = NULL;
 			while (inLoop) {
 				tipo = menuTipoCola();
 				if (tipo == 1 || tipo == 2) {
 					if (tipo == 1) {
-						TDACola* cola = new ArrayQueue();
+						cola = new ArrayQueue();
 					}
 					else {
 						//TDACola* cola = new LinkedQueue();
 					}
 
+					Alumno* alumno = NULL;
 					int opcCola = menuOpcCola();
 					while (opcCola != 7) {
 						switch (opcCola) {
 						case 1: {
+							string id = "";
+							string nombre = "";
+							cout << "Ingrese el id del alumno: ";
+							cin >> id;
+
+							cout << "Ingrese el nombre del alumno: ";
+							cin >> nombre;
+
+							alumno = new Alumno(nombre, id);
+							cola->pone_en_cola(alumno);
 							break;
 						}
 						case 2: {
+							if(cola->saca_de_cola())
+								cout << "Alumno " << cola->saca_de_cola()->toString() << " ha sido sacado\n";
 							break;
 						}
 						case 3: {
+							if(cola->frente())
+								cout << "Alumno " << cola->frente()->toString() << " es primero en la cola\n";
 							break;
 						}
 						case 4: {
+							if (cola->isEmpty()) {
+								cout << "Está Vacía\n";
+							}
+							else {
+								cout << "No Está Vacía\n";
+							}
 							break;
 						}
 						case 5: {
+							cola->imprime_cola();
 							break;
 						}
 						case 6: {
+							cola->anula();
+							cout << "La cola ha sido vaciada\n";
 							break;
 						}
 						default: {cout << "\nOpción no valida\n"; }
@@ -236,6 +262,7 @@ int main(int argc, char** argv) {
 						}
 						opcCola = menuOpcCola();
 					}
+
 				}
 				else if (tipo == 3) {
 					inLoop = false;

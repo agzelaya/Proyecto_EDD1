@@ -13,27 +13,39 @@ ArrayQueue::ArrayQueue()
 
 //retorna el objeto que este en frente de la lista
 Object* ArrayQueue::frente() {
-	return array[front];
+	Object* temp = NULL;
+	if (n > 0) {
+		temp = array[front];
+	}
+	else {
+		cout << "La cola esta vacia\n";
+	}
+	return temp;
 }
 
 /*imprime los objetos en orden de salida
 si inicio es menor que final, los imprime de forma normal
 si inicio es mayor que final, utiliza la lógica de arreglo circular*/
 void ArrayQueue::imprime_cola() {
-	if (front < back) {
-		for (int i = front; i <= back; i++){
-			cout << array[i]->toString() << " <- ";
+	if (n > 0) {
+		if (front < back || front == back) {
+			for (int i = front; i <= back; i++) {
+				cout << "[" << array[i]->toString() << "]" << " <= ";
+			}
+		}
+		else if (front > back) {
+			int cont = 0;
+			for (int i = front; i < capacidad; i++) {
+				cout << "[" << array[i]->toString() << "]" << " <= ";
+				cont++;
+			}
+			for (int i = 0; i <= back; i++) {
+				cout << "[" << array[i]->toString() << "]" << " <= ";
+			}
 		}
 	}
-	else if (front < back) {
-		int cont = 0;
-		for (int i = front; i < capacidad; i++) {
-			cout << array[i]->toString() << " <- ";
-			cont++;
-		}
-		for (int i = 0; i <= back; i++){
-			cout << array[i]->toString() << " <- ";
-		}
+	else {
+		cout << "\nLa cola esta vacia\n";
 	}
 }
 
@@ -53,12 +65,12 @@ void ArrayQueue::anula() {
 sino, lo coloca en la posicion last+1*/
 void ArrayQueue::pone_en_cola(Object* obj) {
 	if(n != capacidad){
-		if (front == (capacidad - 1) && front != back) {
+		if (front == (capacidad - 1)) {
 			array[0] = obj;
 			back = 0;
 			n++;
 		}
-		else if (back == 0 && front == 0) {
+		else if (back == 0 && front == 0 && n == 0) {
 			array[0] = obj;
 			n++;
 		}
@@ -71,20 +83,28 @@ void ArrayQueue::pone_en_cola(Object* obj) {
 	else {
 		cout << "\nLa cola esta llena\n";
 	}
-	
+	cout << "front:" << front;
+	cout << "back:" << back;
 }
 
 /*Saca al obj que esta en frente(en la posicion), cambia el valor de first*/
 Object* ArrayQueue::saca_de_cola() {
-	Object* temp = array[front];
-	array[front] = NULL;
-	if (front < capacidad - 1 && front != back) {
-		front++;
-		n--;
+	Object* temp = NULL;
+	if (n > 0) {
+		temp = array[front];
+
+		array[front] = NULL;
+		if (front < capacidad - 1 && front != back) {
+			front++;
+			n--;
+		}
+		else {
+			front = 0;
+			n--;
+		}
 	}
 	else {
-		front = 0;
-		n--;
+		cout << "La cola esta vacia\n";
 	}
 	return temp;
 }
