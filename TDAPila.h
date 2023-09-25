@@ -1,7 +1,8 @@
 #ifndef TDAPILA_H
 #define TDAPILA_H
-#include "ArrayStack.h"
 #include "Object.h"
+#include <iostream>
+using namespace std;
 
 class TDAPila {
 	public:
@@ -9,9 +10,9 @@ class TDAPila {
 		virtual Object* tope()=0;//top
 		virtual void mete(Object*)=0;//push
 		virtual Object* saca()=0;//pop
-		virtual bool isEmpty()=0;//isempty
+		virtual bool isEmpty()=0 { return size == 0; };//isempty
 		virtual void imprime_pila()=0;
-		int getSize(){ return size; }
+		
 	protected:
 		int size;
 };

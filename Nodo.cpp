@@ -17,32 +17,26 @@ Nodo::~Nodo(){
 		delete item;
 }
 
-Nodo* Nodo::GetNext()
-{
+Nodo* Nodo::getNext(){
 	return siguiente;
 }
 
-void Nodo::SetNext(Nodo* siguiente)
-{
+void Nodo::setNext(Nodo* siguiente){
 	this->siguiente = siguiente;
 }
 
-Nodo* Nodo::GetBack()
-{
+Nodo* Nodo::getBack(){
 	return anterior;
 }
 
-void Nodo::SetBack(Nodo* anterior)
-{
+void Nodo::setBack(Nodo* anterior){
 	this->anterior = anterior;
 }
 
-Object* Nodo::GetItem()
-{
+Object* Nodo::getItem(){
 	return item;
 }
 
-void Nodo::SetItem(Object* item)
-{
+void Nodo::setItem(Object* item){
 	this->item = item;
 }

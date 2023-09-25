@@ -15,37 +15,41 @@ void LinkedStack::anula() {
 }
 
 Object* LinkedStack::tope() {
-	if (inicio != null)
-		return inicio;
+	if (inicio != NULL)
+		return inicio->getItem();
 	else
-		return null;
+		return NULL;
 }
 
 void LinkedStack::mete(Object* data) { //push
-	Nodo* temp = data;
-	if (inicio != null){
+	Nodo* temp = NULL;
+	temp->setItem(data);
+
+	if (inicio != NULL){
 		inicio->anterior = temp;
 		temp->siguiente = inicio;
 		inicio = temp;
 	}else {
 		inicio = temp;
-		inicio->anterior = null;
-		inicio->siguiente = null;
+		inicio->anterior = NULL;
+		inicio->siguiente = NULL;
 	}
 }
 
 Object* LinkedStack::saca() { //pop
-	if (inicio != null) {
-		Nodo* temp = inicio;
-		inicio = null;
-		return temp->obj;
+	if (inicio != NULL) {
+		Object* temp = inicio->getItem();
+		inicio = inicio->siguiente;
+		return temp;
 		//falta borrar temp
 	}else
-		return null;
+		return NULL;
 }
 
 void LinkedStack::imprime_pila() {
-	for (int i = size; i > 0; i--) {
-		cout << array[i - 1] << "\n";
+	Nodo* temp = inicio;
+	while (temp) {
+		cout << temp->getItem();
+		temp = temp->siguiente;
 	}
 }

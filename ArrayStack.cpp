@@ -27,26 +27,34 @@ void ArrayStack::anula() {
 }
 
 Object* ArrayStack::tope() {
-	if (!array->isEmpty())
+	if (size != 0)
 		return array[size - 1];
 	else
-		return null;
+		return NULL;
 }
 
-void ArrayStack::mete(Object*) { //push
-	if (size == 0)
-		array[size] = data;
-	else
-		array[size - 1] = data;
+void ArrayStack::mete(Object* data) { //push
+	if (size!=capacidad){
+		if (size == 0)
+			array[size] = data;
+		else
+			array[size - 1] = data;
+	
+		size++;
+	}
+	else {
+		cout << "La pila está llena\n";
+	}
+	
 }
 
 Object* ArrayStack::saca() { //pop
-	if (!array->isEmpty()) {
+	if (size != 0) {
 		Object* data = array[size - 1];
-		array[size - 1] = null;
+		array[size - 1] = NULL;
 		return data;
 	}else
-		return null;
+		return NULL;
 }
 
 void ArrayStack::imprime_pila() {

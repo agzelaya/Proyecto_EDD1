@@ -148,37 +148,36 @@ int main(int argc, char** argv) {
 				if (tipo == 1 || tipo == 2) {
 					if (tipo == 1) {
 						//*TDAPila pila = new ArrayStack();
+						do {
+							switch (menuOpcPila()) {
+							case 1: {
+								break;
+							}
+							case 2: {
+								break;
+							}
+							case 3: {
+								break;
+							}
+							case 4: {
+								break;
+							}
+							case 5: {
+								break;
+							}
+							case 6: {
+								break;
+							}
+							default: {cout << "\nOpción no valida\n"; }
+
+							}
+						} while (menuOpcPila() != 7);
 					}
 					else {
 						//*TDAPila pila = new LinkedStack();
 					}
 
-					int opcPila = menuOpcPila();
-					while (opcPila != 7) {
-						switch (opcPila) {
-						case 1: {
-							break;
-						}
-						case 2: {
-							break;
-						}
-						case 3: {
-							break;
-						}
-						case 4: {
-							break;
-						}
-						case 5: {
-							break;
-						}
-						case 6: {
-							break;
-						}
-						default: {cout << "\nOpción no valida\n"; }
-
-						}
-						opcPila = menuOpcCola();
-					}
+					 
 				}
 				else if (tipo == 3) {
 					inLoop = false;
