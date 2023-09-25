@@ -4,6 +4,10 @@
 
 class Nodo{
 	public:
+		Nodo* siguiente;
+		Object* item;
+		Nodo* anterior;
+
 		Nodo();
 		~Nodo();
 		Nodo* getNext();
@@ -11,11 +15,7 @@ class Nodo{
 		Nodo* getBack();
 		void setBack(Nodo*);
 		Object* getItem();
-		void setItem(Object*);		
-	public:
-		Nodo* siguiente;
-		Object* item;
-		Nodo* anterior;
+		void setItem(Object*);
 };
 
 #endif

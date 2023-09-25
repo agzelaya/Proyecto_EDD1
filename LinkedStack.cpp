@@ -41,7 +41,6 @@ Object* LinkedStack::saca() { //pop
 		Object* temp = inicio->getItem();
 		inicio = inicio->siguiente;
 		return temp;
-		//falta borrar temp
 	}else
 		return NULL;
 }

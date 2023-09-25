@@ -1,23 +1,19 @@
 #include "Alumno.h"
 
-Alumno::Alumno(std::string nombre, std::string id)
-{
+Alumno::Alumno(std::string nombre, std::string id){
 	this->id = id;
 	this->nombre = nombre;
 }
 
-Alumno::~Alumno()
-{
+Alumno::~Alumno(){
 	nombre = "";
 	id = "";
 }
 
-bool Alumno::equals(Object* objeto)
-{
+bool Alumno::equals(Object* objeto){
 	return false;
 }
 
-string Alumno::toString()
-{
+string Alumno::toString(){
 	return "|"+id + " - " + nombre+"|";
 }
