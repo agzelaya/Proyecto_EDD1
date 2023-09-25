@@ -11,11 +11,11 @@ class ArrayStack : public TDAPila {
 		virtual Object* tope();		
 		virtual void mete(Object*);//push		
 		virtual Object* saca();//pop	
-		virtual bool vacia() { return size == 0; };//isempty
+		virtual bool isEmpty() { return size == 0; };//isempty
 		virtual void imprime_pila();
 		
 	protected:
-		Object** array;
+		Object* array;
 		int capacidad; 
 		int n;
 };

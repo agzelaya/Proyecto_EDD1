@@ -2,20 +2,17 @@
 
 #define NULL 0
 
-Nodo::Nodo()
-{
+Nodo::Nodo(){
 	siguiente = NULL;
 	item = NULL;
 	anterior = NULL;
 	 
 }
 
-Nodo::~Nodo()
-{
+Nodo::~Nodo(){
 	if(siguiente)
 		delete siguiente;
 		
 	if(item)
 		delete item;
-			
 }

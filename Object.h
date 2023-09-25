@@ -4,8 +4,7 @@
 #include <string>
 using std::string;
 
-class Object
-{
+class Object{
 	public:
 		virtual bool equals(Object*)=0;
 		virtual string toString()=0;

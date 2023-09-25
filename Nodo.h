@@ -3,8 +3,7 @@
 
 #include "Object.h"
 
-class Nodo
-{
+class Nodo{
 	public:
 		Nodo();
 		~Nodo();

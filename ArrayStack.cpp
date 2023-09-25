@@ -27,7 +27,7 @@ void ArrayStack::anula() {
 }
 
 Object* ArrayStack::tope() {
-	if (array.vacia() != 0)
+	if (!array->isEmpty())
 		return array[size - 1];
 	else
 		return null;
@@ -41,9 +41,12 @@ void ArrayStack::mete(Object*) { //push
 }
 
 Object* ArrayStack::saca() { //pop
-	Object* data = array[size - 1];
-	array[size - 1] = null;
-	return data;
+	if (!array->isEmpty()) {
+		Object* data = array[size - 1];
+		array[size - 1] = null;
+		return data;
+	}else
+		return null;
 }
 
 void ArrayStack::imprime_pila() {
