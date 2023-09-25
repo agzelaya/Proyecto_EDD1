@@ -3,7 +3,6 @@
 #include <string>
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
-
 #include "ArrayList.h"
 #include "LinkedList.h"
 #include "TDALista.h"
@@ -12,6 +11,7 @@
 #include "ArrayStack.h"
 #include "LinkedStack.h"
 #include "Alumno.h"
+#include "Simbolo.h"
 using namespace std;
 
 int mainMenu() {
@@ -152,33 +152,54 @@ int main(int argc, char** argv) {
 
 			while (inLoop) {
 				tipo = menuTipoPila();
+				TDAPila* pila = NULL;
 				if (tipo == 1 || tipo == 2) {
 					if (tipo == 1) {
-						//TDAPila* pila = new ArrayStack();
-					}
-					else {
-						//TDAPila* pila = new LinkedStack();
+						pila = new ArrayStack();
+					}else {
+						pila = new LinkedStack();
 					}
 
+					Simbolo* symbol = NULL;
+					
 					int opcPila = menuOpcPila();
 					while (opcPila != 7) {
 						switch (opcPila) {
-						case 1: {
+						case 1: {//“Empujar” (push)  
+							char data; 
+							cout << "Ingrese el simbolo que quiere agregar: ";
+							cin >> data;
+							symbol->data = data;
+							pila->mete(symbol);
 							break;
 						}
-						case 2: {
+						case 2: {//“Sacar” (pop)  
+							Object* element = pila->saca();
+							symbol = dynamic_cast<Simbolo*>(element);
+
+							cout << "El simbolo " << symbol->toString() << " fue removido exitosamente!\n";
 							break;
 						}
-						case 3: {
+						case 3: {//Ver Tope (top)  
+							Object* element = pila->tope();
+							symbol = dynamic_cast<Simbolo*>(element);
+							cout << "El tope es: " << symbol->toString() << '\n';
 							break;
 						}
-						case 4: {
+						case 4: {//Verificar si está vacía  
+							string text = "";
+							pila->isEmpty() ? text = "La pila esta vacia\n" : text = "La pila esta llena\n";
+							cout << text;
 							break;
 						}
-						case 5: {
+						case 5: {//print
+							pila->imprime_pila();
+							cout << '\n';
 							break;
 						}
-						case 6: {
+						case 6: {//borrar todos los elementos
+							pila->anula();
+							cout << "Los elementos han sido borrado con exito!";
 							break;
 						}
 						default: {cout << "\nOpción no valida\n"; }
