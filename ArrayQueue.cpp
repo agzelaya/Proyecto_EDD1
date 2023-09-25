@@ -89,6 +89,11 @@ Object* ArrayQueue::saca_de_cola() {
 	return temp;
 }
 
+//retorna true si el size es 0
+bool ArrayQueue::isEmpty() {
+	return n == 0;
+}
+
 //utiliza logica igual a la de anula para eliminar los obj del arreglo circular
 ArrayQueue::~ArrayQueue(){
 	for (int i = 0; i < capacidad; i++) {
