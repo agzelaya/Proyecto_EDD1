@@ -106,6 +106,9 @@ Object* ArrayQueue::saca_de_cola() {
 	else {
 		cout << "La cola esta vacia\n";
 	}
+
+	cout << "front:" << front;
+	cout << "back:" << back;
 	return temp;
 }
 

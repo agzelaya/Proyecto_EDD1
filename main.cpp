@@ -230,7 +230,7 @@ int main(int argc, char** argv) {
 							break;
 						}
 						case 2: {
-							if(cola->saca_de_cola())
+							if(!cola->isEmpty())
 								cout << "Alumno " << cola->saca_de_cola()->toString() << " ha sido sacado\n";
 							break;
 						}
