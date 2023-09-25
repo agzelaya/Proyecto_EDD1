@@ -7,6 +7,12 @@ class Nodo{
 	public:
 		Nodo();
 		~Nodo();
+		Nodo* GetNext();
+		void SetNext(Nodo*);
+		Nodo* GetBack();
+		void SetBack(Nodo*);
+		Object* GetItem();
+		void SetItem(Object*);
 		
 		//TODO: Hacer gets/sets
 		
