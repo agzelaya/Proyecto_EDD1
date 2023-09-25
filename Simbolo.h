@@ -1,12 +1,12 @@
 #pragma once
-#include "Char.h"
 #include "Object.h"
 #include <iostream>
+using namespace std;
 
 class Simbolo : public Object{
 public:
-	Char* data;
-	Simbolo(Char* data);
+	char data;
+	Simbolo(char);
 	~Simbolo();
 
 	virtual bool equals(Object*);

@@ -1,12 +1,10 @@
 #include "Nodo.h"
-
 #define NULL 0
 
 Nodo::Nodo(){
 	siguiente = NULL;
 	item = NULL;
 	anterior = NULL;
-	 
 }
 
 Nodo::~Nodo(){

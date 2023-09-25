@@ -1,19 +1,22 @@
 #include "Simbolo.h"
 
-Simbolo::Simbolo(std::string nombre, std::string id){
-	this->id = id;
-	this->nombre = nombre;
+Simbolo::Simbolo(char data){
+	this->data = data;
 }
 
 Simbolo::~Simbolo(){
-	nombre = "";
-	id = "";
+	delete data;
 }
 
 bool Simbolo::equals(Object* objeto){
-	return false;
+	Simbolo* temp = dynamyc_cast<Simbolo*>(objeto);
+	if (this->data == temp->data)
+		return true;
+	else
+		return false;
 }
 
 string Simbolo::toString(){
-	return data;
+	string text = data;
+	return text;
 }
