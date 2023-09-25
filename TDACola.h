@@ -2,7 +2,8 @@
 #define TDACOLA_H
 
 #include "Object.h"
-
+#include <iostream>
+using namespace std;
 class TDACola
 {
 	public:

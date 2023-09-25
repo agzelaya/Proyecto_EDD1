@@ -9,25 +9,25 @@ class ArrayQueue : public TDACola
 		ArrayQueue();
 		~ArrayQueue();
 		
-		//virtual Object* frente();
-		//
-		//virtual void imprime_cola();
-		//
-		//virtual void anula();
-		//
-		////Dequeue
-		//virtual Object* saca_de_cola(); 
-		//
-		////Queue
-		//virtual void pone_en_cola(Object*);
-		//
+		virtual Object* frente();
+		
+		virtual void imprime_cola();
+		
+		virtual void anula();
+		
+		//Dequeue
+		virtual Object* saca_de_cola(); 
+		
+		//Queue
+		virtual void pone_en_cola(Object*);
+		
 		//virtual bool vacia();
+
 	protected:
-		int inicio;
+		int front;
 		int capacidad;
-		int n;
-		int numFrente;
-		int final;
+		int n;//size;
+		int back;
 		Object** array;
 };
 
