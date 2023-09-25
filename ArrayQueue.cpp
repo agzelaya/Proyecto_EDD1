@@ -65,9 +65,13 @@ void ArrayQueue::anula() {
 sino, lo coloca en la posicion last+1*/
 void ArrayQueue::pone_en_cola(Object* obj) {
 	if(n != capacidad){
-		if (front == (capacidad - 1)) {
+		if (front == (capacidad - 1) && n == 1) {
 			array[0] = obj;
 			back = 0;
+			n++;
+		}else if (front == (capacidad - 1) && n > 1) {
+			array[back + 1] = obj;
+			back++;
 			n++;
 		}
 		else if (back == 0 && front == 0 && n == 0) {
@@ -85,6 +89,7 @@ void ArrayQueue::pone_en_cola(Object* obj) {
 	}
 	cout << "front:" << front;
 	cout << "back:" << back;
+	cout << "size: " << n << endl; 
 }
 
 /*Saca al obj que esta en frente(en la posicion), cambia el valor de first*/
@@ -108,7 +113,7 @@ Object* ArrayQueue::saca_de_cola() {
 	}
 
 	cout << "front:" << front;
-	cout << "back:" << back;
+	cout << "back:" << back << endl;
 	return temp;
 }
 
