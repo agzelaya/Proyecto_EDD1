@@ -55,9 +55,6 @@ void ArrayQueue::anula() {
 		if (array[i] != NULL) {
 			array[i] = NULL;
 		}
-		n = 0;
-		front = 0;
-		back = 0;
 	}
 }
 
@@ -87,9 +84,6 @@ void ArrayQueue::pone_en_cola(Object* obj) {
 	else {
 		cout << "\nLa cola esta llena\n";
 	}
-	cout << "front:" << front;
-	cout << "back:" << back;
-	cout << "size: " << n << endl; 
 }
 
 /*Saca al obj que esta en frente(en la posicion), cambia el valor de first*/
@@ -112,8 +106,6 @@ Object* ArrayQueue::saca_de_cola() {
 		cout << "La cola esta vacia\n";
 	}
 
-	cout << "front:" << front;
-	cout << "back:" << back << endl;
 	return temp;
 }
 
