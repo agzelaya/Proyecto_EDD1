@@ -10,18 +10,19 @@ class LinkedList : public TDALista
 		LinkedList();
 		~LinkedList();
 		
-		/*virtual void anula();
+		virtual void anula();
 		virtual bool inserta(Object*,int);
 		virtual Object* siguiente(int);
 		virtual Object* anterior(int);
 		virtual void append(Object*);
 		virtual void imprimir_lista();
-		virtual Object* suprime(int);
+		virtual bool suprime(int);
 		virtual Object* recupera(int);
 		virtual int localiza(Object*);
 		virtual Object* primero();
-		virtual bool vacia();*/
-		
+		virtual bool vacia();
+		void NodesDefine(Nodo*);
+
 	protected:
 		Nodo* inicio;
 		Nodo* final;
