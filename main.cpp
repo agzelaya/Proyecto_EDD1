@@ -89,45 +89,100 @@ int main(int argc, char** argv) {
 		case 1: {
 			int tipo;
 			bool inLoop = true;
+			TDALista* lista = NULL; 
 
 			while (inLoop) {
 				tipo = menuTipoLista();
 				if (tipo == 1 || tipo == 2) {
 					if (tipo == 1) {
-						//TDALista* lista = new ArrayList();
+						lista = new ArrayList(); 
 					}
 					else {
 						//TDALista* lista = new LinkedList();
 					}
-
+					Alumno* alumno = NULL; 
 					int opcLista = menuOpcLista();
+
+
 					while (opcLista != 10) {
 						switch (opcLista) {
-						case 1: {
+						case 1: {//insertar elemento ? append o insertar
+							string id = "";
+							string nombre = "";
+							int pos; 
+
+							cout << "Ingrese el id del alumno: ";
+							cin >> id;
+							cout << "Ingrese el nombre del alumno: ";
+							cin >> nombre;
+							cout << "Ingrese la posicion a donde desea agregar elemento: ";
+							cin >> pos;
+
+							alumno = new Alumno(nombre, id); 
+							bool retorno = lista->inserta(alumno, pos);
+							cout << retorno<<endl;
 							break;
 						}
-						case 2: {
+						case 2: {//imprimir elemento ? solo hay imprime lista
+							lista->imprimir_lista();
 							break;
 						}
-						case 3: {
+						case 3: {//buscar elemento -> localiza
+							string id = "";
+							string nombre = "";
+
+							cout << "Ingrese el id del alumno: ";
+							cin >> id;
+							cout << "Ingrese el nombre del alumno: ";
+							cin >> nombre;
+
+							Alumno* alumno2 = new Alumno(nombre, id); 
+							int retorno = lista->localiza(alumno2); 
+							cout << retorno << endl;
 							break;
 						}
-						case 4: {
+						case 4: {//borrar elemento -> suprime
+							int pos;
+							cout << "Ingrese la posicion del elemento a borrar: ";
+							cin >> pos; 
+
+							bool retorno = lista->suprime(pos); 
+							cout << retorno << endl;
 							break;
 						}
-						case 5: {
+						case 5: {//vacia
+							bool retorno = lista->vacia(); 
+							cout << retorno << endl;
 							break;
 						}
-						case 6: {
+						case 6: {//obtener elemento por posicion -> recupera
+							int pos;
+							cout << "Ingrese la posicion del elemento: ";
+							cin >> pos;
+
+							Object* retorno = lista->recupera(pos); 
+							cout << retorno->toString() << endl;
 							break;
 						}
-						case 7: {
+						case 7: {//siguiente
+							int pos;
+							cout << "Ingrese la posicion del elemento: ";
+							cin >> pos;
+
+							Object* retorno = lista->siguiente(pos); 
+							cout << retorno->toString() << endl;
 							break;
 						}
-						case 8: {
+						case 8: {//anterior
+							int pos;
+							cout << "Ingrese la posicion del elemento: ";
+							cin >> pos;
+							Object* retorno = lista->anterior(pos); 
+							cout << retorno->toString() << endl;
 							break;
 						}
-						case 9: {
+						case 9: {//anula
+							lista->anula();
 							break;
 						}
 						default: {cout << "\nOpción no valida\n"; }

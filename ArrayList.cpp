@@ -110,7 +110,7 @@ void ArrayList::imprimir_lista()
 {
 	for (int i = 0; i < n; i++)
 	{
-		std::cout << array[i] << " ";
+		std::cout << array[i]->toString() << " ";
 	}
 }
 
@@ -169,7 +169,7 @@ int ArrayList::localiza(Object* elemento)
 	bool localizado = false;
 	for (int i = 0; i <= n; i++)
 	{
-		if (array[i]==elemento)
+		if (array[i]->equals(elemento))
 		{
 			localizado = true;
 			return (i + 1);
