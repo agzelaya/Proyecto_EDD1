@@ -16,8 +16,8 @@ class LinkedQueue : public TDACola
 		
 		virtual void anula();
 		
-		////Dequeue
-		//virtual Object* saca_de_cola(); 
+		//Dequeue
+		virtual Object* saca_de_cola(); 
 		//
 		//Queue
 		virtual void pone_en_cola(Object*);

@@ -280,7 +280,7 @@ int main(int argc, char** argv) {
 						cola = new ArrayQueue();
 					}
 					else {
-						//TDACola* cola = new LinkedQueue();
+						cola = new LinkedQueue();
 					}
 
 					Alumno* alumno = NULL;
@@ -303,11 +303,13 @@ int main(int argc, char** argv) {
 						case 2: {
 							if(!cola->isEmpty())
 								cout << "Alumno " << cola->saca_de_cola()->toString() << " ha sido sacado\n";
+							else
+								cout << "La cola esta vacia\n";
 							break;
 						}
 						case 3: {
 							if(cola->frente())
-								cout << "Alumno " << cola->frente()->toString() << " es primero en la cola\n";
+								cout << "Frente: " << cola->frente()->toString() << endl;
 							break;
 						}
 						case 4: {

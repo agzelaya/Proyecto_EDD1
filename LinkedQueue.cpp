@@ -5,14 +5,16 @@
 LinkedQueue::LinkedQueue()
 {
 	front = NULL;
-	back=NULL;
+	back = NULL;
 }
 
 //si front no es null, retorna el objeto en front
 Object* LinkedQueue::frente() {
+	Nodo* temp = new Nodo();
 	if (front != NULL) {
-		return front->getItem();
+		temp = front;
 	}
+	return temp->getItem();
 }
 
 /*si no hay elementos, añade un nodo como front y back, si hay por lo menos
@@ -25,34 +27,48 @@ void LinkedQueue::pone_en_cola(Object* obj) {
 		back = temp;
 	}
 	else {
-		temp->setNext(front);
-		front->setBack(temp);
+		temp->setNext(back);
+		back->setBack(temp);
 		back = temp;
 	}
+
 }
 
-//asigna temp al nodo front, si tiene un nodo siguiente, lo imprime
-void LinkedQueue::imprime_cola() {
+//saca de cola al elemento que esta en el nodo front
+Object* LinkedQueue::saca_de_cola() {
 	Nodo* temp = new Nodo();
 	if (front != NULL) {
 		temp = front;
-		while (temp->getNext()) {
-			cout << "[" << temp->getItem() << "]" << " <= ";
-			temp = temp->getNext();
+		front = temp->getBack();
+	}
+	return temp->getItem();
+}
+
+//asigna temp al nodo front, si tiene un nodo anterior, lo imprime
+void LinkedQueue::imprime_cola() {
+	Nodo* temp = new Nodo();
+	bool hasBack = true ;
+	if (front != NULL) {
+		temp = front;
+		while (hasBack) {
+			cout << "[ " << temp->getItem()->toString() << "]" << " <= ";
+			if (temp->getBack() != NULL) { temp = temp->getBack(); }
+			else {
+				hasBack = false;
+			}
+			
 		}
+		cout << endl;
+	}
+	else {
+		cout << "\nLa cola esta vacia\n";
 	}
 }
 
-//??
+//elimina toda la lista debido al destructor del objeto nodo
 void LinkedQueue::anula() {
-	/*Nodo* temp = new Nodo();
-	if (front != NULL) {
-		if (temp->getNext())
-			delete temp->getNext();
-
-		if (temp->getItem())
-			delete temp->getItem();
-	}*/
+	delete front;
+	front = NULL;
 }
 
 //retorna si la lista esta vacia
@@ -62,6 +78,6 @@ bool LinkedQueue::isEmpty() {
 
 LinkedQueue::~LinkedQueue()
 {
-	if(back) //TODO: Revisar si se debe borrar el final o el inicial 
-		delete back;
+	if(front) 
+		delete front;
 }

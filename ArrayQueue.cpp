@@ -30,19 +30,20 @@ void ArrayQueue::imprime_cola() {
 	if (n > 0) {
 		if (front < back || front == back) {
 			for (int i = front; i <= back; i++) {
-				cout << "[" << array[i]->toString() << "]" << " <= ";
+				cout << "[ " << array[i]->toString() << "]" << " <= ";
 			}
 		}
 		else if (front > back) {
 			int cont = 0;
 			for (int i = front; i < capacidad; i++) {
-				cout << "[" << array[i]->toString() << "]" << " <= ";
+				cout << "[ " << array[i]->toString() << "]" << " <= ";
 				cont++;
 			}
 			for (int i = 0; i <= back; i++) {
-				cout << "[" << array[i]->toString() << "]" << " <= ";
+				cout << "[ " << array[i]->toString() << "]" << " <= ";
 			}
 		}
+		cout << endl;
 	}
 	else {
 		cout << "\nLa cola esta vacia\n";
@@ -101,9 +102,6 @@ Object* ArrayQueue::saca_de_cola() {
 			front = 0;
 			n--;
 		}
-	}
-	else {
-		cout << "La cola esta vacia\n";
 	}
 
 	return temp;
