@@ -15,7 +15,7 @@ ArrayList::ArrayList()
 ArrayList::~ArrayList()
 {
 	//libera el contenido de las casillas
-	for(int i=0; i<n; i++){
+	for(int i=0; i<=n; i++){
 		if(array[i]){
 			delete array[i];
 			array[i] =NULL;
@@ -27,7 +27,7 @@ ArrayList::~ArrayList()
 
 void ArrayList::anula()
 {
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i <= n; i++)
 	{
 		if (array[i]) {
 			delete array[i];
@@ -47,6 +47,7 @@ bool ArrayList::inserta(Object* elemento, int pos_list)
 			{
 				if (!array[i])
 				{
+					n++;
 					array[i] = elemento; 
 				}
 				else {
@@ -108,9 +109,11 @@ void ArrayList::append(Object* elemento)
 
 void ArrayList::imprimir_lista()
 {
-	for (int i = 0; i < n; i++)
+	std::cout << "Lista: " << endl; 
+	for (int i = 0; i <= n; i++)
 	{
-		std::cout << array[i]->toString() << " ";
+		string objeto = (array[i]->toString());
+		std::cout <<"-> "<<objeto<<""<< std::endl;
 	}
 }
 

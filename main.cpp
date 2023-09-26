@@ -123,7 +123,7 @@ int main(int argc, char** argv) {
 							cout << retorno<<endl;
 							break;
 						}
-						case 2: {//imprimir elemento ? solo hay imprime lista
+						case 2: {//imprimir elementos
 							lista->imprimir_lista();
 							break;
 						}
