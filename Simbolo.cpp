@@ -8,6 +8,7 @@ Simbolo::~Simbolo(){
 	data = NULL;
 }
 
+//compara dos elementos usando dynamic cast para castearlo a símbolo y compararlo propiamente
 bool Simbolo::equals(Object* objeto){
 	Simbolo* temp = dynamic_cast<Simbolo*>(objeto);
 	if (this->data == temp->data)
@@ -16,7 +17,7 @@ bool Simbolo::equals(Object* objeto){
 		return false;
 }
 
-string Simbolo::toString(){
+string Simbolo::toString(){//convierte el atributo de char en string
 	string text = "";
 	text += data;
 	return text;
