@@ -1,6 +1,6 @@
 #include "ArrayList.h"
 
-#define NULL 0
+//#define NULL 0
 
 ArrayList::ArrayList()
 {
@@ -109,12 +109,17 @@ void ArrayList::append(Object* elemento)
 
 void ArrayList::imprimir_lista()
 {
-	std::cout << "Lista: " << endl; 
-	for (int i = 0; i <= n; i++)
-	{
-		string objeto = (array[i]->toString());
-		std::cout <<"-> "<<objeto<<""<< std::endl;
+	if (n > 0) {
+		cout << "Lista: " << endl;
+		for (int i = 0; i < n; i++) {
+			cout << ", " << array[i]->toString();
+		}
+		cout << endl;
 	}
+	else {
+		cout << "Lista esta vacia\n";
+	}
+	
 }
 
 bool ArrayList::suprime(int pos_list)

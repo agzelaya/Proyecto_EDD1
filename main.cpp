@@ -124,6 +124,7 @@ int main(int argc, char** argv) {
 							break;
 						}
 						case 2: {//imprimir elementos
+
 							lista->imprimir_lista();
 							break;
 						}

@@ -1,8 +1,7 @@
-#ifndef ARRAYLIST_H
-#define ARRAYLIST_H
-
+#pragma once
 #include "TDALista.h"
 #include "iostream"
+using namespace std;
 
 class ArrayList : public TDALista
 {
@@ -27,5 +26,3 @@ class ArrayList : public TDALista
 		int capacidad;//limite?
 		int n;//size
 };
-
-#endif
