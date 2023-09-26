@@ -161,7 +161,6 @@ int main(int argc, char** argv) {
 					}
 
 					Simbolo* symbol = NULL;
-					
 					int opcPila = menuOpcPila();
 					while (opcPila != 7) {
 						switch (opcPila) {
@@ -199,7 +198,7 @@ int main(int argc, char** argv) {
 						}
 						case 6: {//borrar todos los elementos
 							pila->anula();
-							cout << "Los elementos han sido borrado con exito!";
+							cout << "Los elementos han sido borrados con exito!\n";
 							break;
 						}
 						default: {cout << "\nOpción no valida\n"; }

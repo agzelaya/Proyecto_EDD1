@@ -21,8 +21,10 @@ ArrayStack::~ArrayStack(){
 }
 
 void ArrayStack::anula() {
-	for (int i = size; i > 0; i--) {
-		delete array[i - 1];
+	if (size != 0){
+		for (int i = size; i > 0; i--) {
+			delete array[i - 1];
+		}
 	}
 }
 

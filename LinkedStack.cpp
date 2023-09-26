@@ -11,7 +11,8 @@ LinkedStack::~LinkedStack(){
 }
 
 void LinkedStack::anula() {
-	delete inicio;
+	if (size != 0)
+		delete inicio;
 }
 
 Object* LinkedStack::tope() {
