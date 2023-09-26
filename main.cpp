@@ -1,7 +1,6 @@
 #include <iostream>
 #include <windows.h>
 #include <string>
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 #include "ArrayList.h"
 #include "LinkedList.h"
@@ -124,7 +123,6 @@ int main(int argc, char** argv) {
 							break;
 						}
 						case 2: {//imprimir elementos
-
 							lista->imprimir_lista();
 							break;
 						}
@@ -224,7 +222,7 @@ int main(int argc, char** argv) {
 							char data; 
 							cout << "Ingrese el simbolo que quiere agregar: ";
 							cin >> data;
-							symbol->data = data;
+							symbol = new Simbolo(data);
 							pila->mete(symbol);
 							break;
 						}

@@ -36,6 +36,8 @@ Object* ArrayStack::tope() {//retorna el primer elemento "tope" de la pila
 
 void ArrayStack::mete(Object* data) {//inserta un nuevo elemento a la pila 
 	if (size!=capacidad){
+		
+
 		if (size == 0)
 			array[size] = data;
 		else
