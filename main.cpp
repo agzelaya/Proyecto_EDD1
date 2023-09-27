@@ -31,7 +31,7 @@ bool number(string id) {// metodo que valida que solo se ingresen numeros
 		char c = id[i];
 		if (c<48||c>57)
 		{
-			cout << "! Se debe digitar un código de números";
+			cout << "! Se debe digitar números";
 			return false; 
 		}
 	}
@@ -66,55 +66,96 @@ bool validNumber(TDALista* lista, Alumno* alumno, int type) {//metodo que valida
 }
 
 int mainMenu() {
-	int x;
+	string cadena;
 	cout << "\nMenú Principal\n  1. Trabajar con Listas\n  2. Trabajar con Pilas\n  3. Trabajar con Colas\n  4. Salir\nIngrese la opción: ";
-	cin >> x;
+	do
+	{
+		cout << endl;
+		cin >> cadena;
+	} while (!(number(cadena)));
+
+	int x = stoi(cadena);
 	return x;
 }
 
 int menuTipoLista() {
-	int x;
+	string cadena;
 	cout << "\nMenú Tipo de Lista\n  1. Trabajar con ArrayList\n  2. Trabajar con Linked List\n  3. Regresar al Menú Principal\nIngrese la opción: ";
-	cin >> x;
+	do
+	{
+		cout << endl;
+		cin >> cadena;
+	} while (!(number(cadena))); 
+	int x = stoi(cadena); 
 	return x;
 }
 
 int menuOpcLista() {
-	int x;
+	string cadena; 
 	cout << "\nOpciones de Lista\n  1. Insertar Elemento\n  2. Imprimir Elementos\n  3. Buscar Elemento\n  4. Borrar Elemento\n"
 		<< "  5. Ver si está vacía\n  6. Obtener Elemento por Posición\n  7. Obtener Siguiente\n  8. Obtener Anterior\n"
 		<< "  9. Borrar todos los Elementos(Anula)\n  10. Regresar al Menú Anterior\nIngrese la opción: ";
-	cin >> x;
+	do
+	{
+		cout << endl;
+		cin >> cadena;
+	} while (!(number(cadena)));
+
+	int x = stoi(cadena);
 	return x;
 }
 
 int menuTipoPila() {
-	int x;
+	string cadena;
 	cout << "\nMenú Tipo Pila\n  1. Trabajar con ArrayStack\n  2. Trabajar con LinkedStack\n  3. Regresar al Menú Principal\nIngrese la opción: ";
-	cin >> x;
+	do
+	{
+		cout << endl;
+		cin >> cadena;
+	} while (!(number(cadena)));
+
+	int x = stoi(cadena);
 	return x;
 }
 
 int menuOpcPila() {
-	int x;
+	string cadena;
 	cout << "\nOperaciones de Pilas\n  1. “Empujar” (push)\n  2. “Sacar” (pop)\n  3. Ver Tope (top)\n"
 		<< "  4. Verificar si está vacía\n  5. Imprimir elementos\n  6. Borrar todos los elementos\n  7. Regresar al Menú Anterior\nIngrese la opción: ";
-	cin >> x;
+	do
+	{
+		cout << endl;
+		cin >> cadena;
+	} while (!(number(cadena)));
+
+	int x = stoi(cadena);
 	return x;
 }
 
 int menuTipoCola() {
-	int x;
+	string cadena;
 	cout << "\nMenú Tipo Cola\n  1. Trabajar con ArrayQueue\n  2. Trabajar con LinkedQueue\n  3. Regresar al Menú Principal\nIngrese la opción: ";
-	cin >> x;
+	do
+	{
+		cout << endl;
+		cin >> cadena;
+	} while (!(number(cadena)));
+
+	int x = stoi(cadena);
 	return x;
 }
 
 int menuOpcCola() {
-	int x;
+	string cadena;
 	cout << "\nOperaciones de Colas\n  1. \"Encolar\" (queue)\n  2. \"Desencolar\" (dequeue)\n  3. Ver Frente (peek)\n"
 		<< "  4. Verificar si está vacía\n  5. Imprimir elementos\n  6. Borrar los elementos\n  7. Regresar al Menú Anterior\nIngrese la opción: ";
-	cin >> x;
+	do
+	{
+		cout << endl;
+		cin >> cadena;
+	} while (!(number(cadena)));
+
+	int x = stoi(cadena);
 	return x;
 }
 

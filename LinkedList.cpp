@@ -16,10 +16,11 @@ LinkedList::~LinkedList()//Destructor
 }
 
 void LinkedList::anula()//borra todos los elementos de lista y libera memoria
-{
-	delete inicio; 
+{ 
 	n = 0;
 	size = 0;
+	inicio = NULL;  
+	delete inicio;
 }
 /*Agrega elementos a la lista acorde a la posicion y de este se modifican el nodo inicial y final*/
 bool LinkedList::inserta(Object* item, int pos)
