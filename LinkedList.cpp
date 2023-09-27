@@ -24,30 +24,48 @@ void LinkedList::anula()
 bool LinkedList::inserta(Object* item, int pos)
 {
 	int pos_code = pos - 1;
-	Nodo* temp = inicio;
 	if (pos_code>=0&&pos_code<=n)
 	{
 		Nodo* newNode = new Nodo(); 
 		newNode->setItem(item);
-		int i = 0;  
-		while (i!=pos_code) 
+
+		if (pos_code == 0)
 		{
-			temp = temp->getNext();
-			i++;
-		}
-		if (inicio)
-		{
-			newNode->setBack(temp->getBack());
-			newNode->setNext(temp); 
-			newNode->getBack()->setNext(newNode);
-			temp->setBack(newNode);
-			NodesDefine(temp); 
+			if (!inicio)
+			{
+				final = newNode; 
+			}
+			else {
+				Nodo* temp_siguiente = inicio; 
+				temp_siguiente->setBack(newNode);
+				newNode->setNext(temp_siguiente); 
+			}
+			inicio = newNode; 
 		}
 		else {
-			inicio = newNode;
-			final = newNode;  
+			if (pos_code == n) {
+				Nodo* temp_anterior = final; 
+				newNode->setBack(temp_anterior);
+				temp_anterior->setNext(newNode);
+				final = newNode;
+			}
+			else {
+				int i = 0; 
+				Nodo* temp = inicio; 
+				while (i!=pos_code) 
+				{
+					temp = temp->getNext();
+					i++;
+				}
+				Nodo* anterior = temp->getBack();
+				Nodo* siguiente = temp; 
+				newNode->setBack(anterior);
+				newNode->setNext(siguiente);
+				anterior->setNext(newNode);
+				siguiente->setBack(newNode);
+
+			}
 		}
-		
 		n++;
 		return true; 
 	}
@@ -67,8 +85,8 @@ Object* LinkedList::siguiente(int pos)
 		temp = temp->getNext();
 		i++;
 	}
-	
-	return temp->getNext()->getItem();
+	Nodo* siguiente = temp->getNext();
+	return siguiente->getItem();
 }
 
 Object* LinkedList::anterior(int pos)
@@ -81,18 +99,18 @@ Object* LinkedList::anterior(int pos)
 		temp = temp->getNext();
 		i++;
 	}
-
-	return temp->getBack()->getItem(); 
+	Nodo* anterior = temp->getBack();
+	return anterior->getItem();
 }
 
 void LinkedList::append(Object* item)//
 {
-	Nodo* temp = inicio;
 	Nodo* newNode = new Nodo();
 	newNode->setItem(item);
 	n++;
-	newNode->setBack(final);
-	final->setNext(newNode);
+	Nodo* temp_anterior = final;
+	newNode->setBack(temp_anterior);
+	temp_anterior->setNext(newNode);
 	final = newNode; 
 }
 
@@ -101,11 +119,10 @@ void LinkedList::imprimir_lista()
 	Nodo* temp = inicio; 
 	if (n > 0) {
 		cout << "Lista: " << endl;
-		while (temp->getNext()) {
+		while (temp) {
 			cout << "->" << temp->getItem()->toString() <<endl; 
 			temp = temp->getNext();
 		}
-		cout << endl;
 	}
 	else {
 		cout << "Lista esta vacia\n";
@@ -113,24 +130,46 @@ void LinkedList::imprimir_lista()
 	
 }
 
-bool LinkedList::suprime(int pos)
+bool LinkedList::suprime(int pos)//
 {
 	int pos_code = pos - 1;
 	Nodo* temp = inicio;
-	if (pos >= 1 && pos < n)
+	if (pos_code>=0 && pos_code<=n)
 	{
 		int i = 0;
-		n--;
 		while (i != pos_code)
 		{
 			temp = temp->getNext();
 			i++;
 		}
-		temp->getNext()->setBack(temp->getBack());
-		temp->getBack()->setNext(temp->getNext());
-		temp->setBack(nullptr);
-		temp->setNext(nullptr);
-		NodesDefine(temp);
+		if (pos ==0)
+		{
+			Nodo* newInicio = temp->getNext();
+			newInicio->setBack(nullptr);
+			temp->setNext(nullptr);
+			inicio = newInicio;
+			delete temp; 
+		}
+		else {
+			if (pos ==n)
+			{
+				Nodo* newFin = temp->getBack();
+				newFin->setNext(nullptr);
+				temp->setBack(nullptr);
+				final = newFin;
+				delete temp; 
+			}
+			else {
+				Nodo* siguiente = temp->getNext();
+				Nodo* anterior = temp->getBack();
+				anterior->setNext(siguiente);
+				siguiente->setBack(anterior);
+				temp->setBack(nullptr);
+				temp->setNext(nullptr);
+				delete temp;
+			}
+		}
+		n--;
 		return true;
 	}
 	else {
@@ -160,13 +199,13 @@ int LinkedList::localiza(Object* item)//
 	{
 		if (temp->getItem()->equals(item))
 		{
-			return i;
+			return (i+1);
 		}
 		temp = temp->getNext();
 		i++;
 	}
 
-	return 0;
+	return -1;
 }
 
 Object* LinkedList::primero()
@@ -176,26 +215,11 @@ Object* LinkedList::primero()
 
 bool LinkedList::vacia()
 {
-	if (inicio)
+	if (!inicio)
 	{
 		return true;
 	}else{ 
 		return false; 
 	}
-	
-}
-
-void LinkedList::NodesDefine(Nodo* nodo) {
-	Nodo* temp = nodo;
-	while (temp->getBack())
-	{
-		temp = temp->getBack();
-	}
-	inicio = temp; 
-	while (temp->getNext())
-	{
-		temp = temp->getNext();
-	}
-	final = temp; 
 	
 }
