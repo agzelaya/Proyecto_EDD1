@@ -1,4 +1,4 @@
-#include "ArrayStack.h"
+ï»¿#include "ArrayStack.h"
 #define NULL 0
 
 ArrayStack::ArrayStack(){
@@ -40,11 +40,11 @@ void ArrayStack::mete(Object* data) {//inserta un nuevo elemento a la pila
 		size++;
 		array[size - 1] = data;
 	}else {
-		cout << "La pila está llena\n";
+		cout << "La pila estÃ¡ llena\n";
 	}
 }
 
-Object* ArrayStack::saca() {//elimina el primer elemento de la pila (o el último que se añadió) y lo devuelve
+Object* ArrayStack::saca() {//elimina el primer elemento de la pila (o el Ãºltimo que se aÃ±adiÃ³) y lo devuelve
 	if (size != 0) {
 		Object* data = array[size - 1];
 		array[size - 1] = NULL;
@@ -54,12 +54,15 @@ Object* ArrayStack::saca() {//elimina el primer elemento de la pila (o el último
 		return NULL;
 }
 
-void ArrayStack::imprime_pila() {//imprime la pila desde el último elemento que se añadió hasta el primero (LIFO)
-	cout << "\nTope-> ";
-	for (int i = size - 1 ; i >= 0; i--){
-		if (i == 0)
-			cout << array[i]->toString() << " <-Fondo";
-		else
-			cout << array[i]->toString() << "\n       ";
-	}
+void ArrayStack::imprime_pila() {//imprime la pila desde el Ãºltimo elemento que se aÃ±adiÃ³ hasta el primero (LIFO)
+	if (size != 0){
+		cout << "\nTope-> ";
+		for (int i = size - 1; i >= 0; i--) {
+			if (i == 0)
+				cout << array[i]->toString() << " <-Fondo";
+			else
+				cout << array[i]->toString() << "\n       ";
+		}
+	}else
+		cout << "\nLa pila esta vacia";
 }

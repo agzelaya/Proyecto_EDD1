@@ -13,6 +13,8 @@ Nodo::~Nodo(){
 		
 	if(item)
 		delete item;
+
+	anterior = NULL;//buena práctica de programación
 }
 
 Nodo* Nodo::getNext(){

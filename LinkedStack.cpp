@@ -1,4 +1,4 @@
-#include "LinkedStack.h"
+﻿#include "LinkedStack.h"
 #define NULL 0
 
 LinkedStack::LinkedStack(){
@@ -12,15 +12,15 @@ LinkedStack::~LinkedStack(){
 }
 
 void LinkedStack::anula() {//elimina los nodos
-	cout << size << "\n";
 	if (size != 0) {
 		delete inicio;
 		size = 0;
+		inicio = NULL;
 	}
 }
 
 Object* LinkedStack::tope() {//retorna el primer nodo "el tope" de la pila
-	if (inicio != NULL)
+	if (inicio)
 		return inicio->getItem();
 	else
 		return NULL;
@@ -30,7 +30,7 @@ void LinkedStack::mete(Object* data) {//inserta un nuevo nodo al inicio de la pi
 	Nodo* temp = new Nodo();
 	temp->setItem(data);
 
-	if (inicio != NULL){
+	if (inicio){
 		inicio->anterior = temp;
 		temp->siguiente = inicio;
 		inicio = temp;
@@ -42,9 +42,9 @@ void LinkedStack::mete(Object* data) {//inserta un nuevo nodo al inicio de la pi
 	size++;
 }
 
-Object* LinkedStack::saca() { //elimina el primer nodo y lo retorne
-	size--;
-	if (inicio != NULL) {
+Object* LinkedStack::saca() { //elimina el primer nodo y lo retorna
+	if (inicio) {
+		size--;
 		Object* temp = inicio->getItem();
 		inicio = inicio->siguiente;
 		return temp;
@@ -53,13 +53,20 @@ Object* LinkedStack::saca() { //elimina el primer nodo y lo retorne
 }
 
 void LinkedStack::imprime_pila() {//imprime todos los nodos de la pila (de izquierda a derecha)
-	cout << "\nPila: ";
-	Nodo* temp = inicio;
-	while (temp) {
-		if (temp->siguiente!=NULL)
-			cout << temp->getItem()->toString() << "  ->  ";
-		else 
-			cout << temp->getItem()->toString();
-		temp = temp->siguiente;
-	}
+	if (inicio) {
+		Nodo* temp = inicio;
+		cout << "\nPila: ";
+
+		while (temp) {
+			if (temp->siguiente != NULL)
+				cout << temp->getItem()->toString() << "  ->  ";
+			else
+				cout << temp->getItem()->toString();
+			temp = temp->siguiente;
+		}
+
+		cout << "\n      ^\n    inicio";
+	}else
+		cout << "\nLa pila esta vacia";
+	
 }

@@ -106,7 +106,7 @@ int main(int argc, char** argv) {
 							cin >> id;
 							cout << "Ingrese el nombre del alumno: ";
 							cin >> nombre;
-							cout << "Ingrese la posicion a donde desea agregar elemento: ";
+							cout << "Ingrese la posición a donde desea agregar elemento: ";
 							cin >> pos;
 
 							alumno = new Alumno(nombre, id); 
@@ -134,7 +134,7 @@ int main(int argc, char** argv) {
 						}
 						case 4: {//borrar elemento -> suprime
 							int pos;
-							cout << "Ingrese la posicion del elemento a borrar: ";
+							cout << "Ingrese la posición del elemento a borrar: ";
 							cin >> pos; 
 
 							bool retorno = lista->suprime(pos); 
@@ -148,7 +148,7 @@ int main(int argc, char** argv) {
 						}
 						case 6: {//obtener elemento por posicion -> recupera
 							int pos;
-							cout << "Ingrese la posicion del elemento: ";
+							cout << "Ingrese la posición del elemento: ";
 							cin >> pos;
 
 							Object* retorno = lista->recupera(pos); 
@@ -157,7 +157,7 @@ int main(int argc, char** argv) {
 						}
 						case 7: {//siguiente
 							int pos;
-							cout << "Ingrese la posicion del elemento: ";
+							cout << "Ingrese la posición del elemento: ";
 							cin >> pos;
 
 							Object* retorno = lista->siguiente(pos); 
@@ -176,7 +176,7 @@ int main(int argc, char** argv) {
 							lista->anula();
 							break;
 						}
-						default: {cout << "\nOpción no valida\n"; }
+						default: {cout << "\nOpción no válida\n"; }
 						}
 						opcLista = menuOpcLista();
 					}
@@ -185,7 +185,7 @@ int main(int argc, char** argv) {
 					inLoop = false;
 				}
 				else if (tipo > 3) {
-					cout << "\nOpción no valida\n";
+					cout << "\nOpción no válida\n";
 				}
 			}
 			break;
@@ -212,18 +212,18 @@ int main(int argc, char** argv) {
 						switch (opcPila) {
 						case 1: {//“Empujar” (push)  
 							char data; 
-							cout << "Ingrese el simbolo que quiere agregar: ";
+							cout << "Ingrese el símbolo que quiere agregar: ";
 							cin >> data;
 							symbol = new Simbolo(data);
 							pila->mete(symbol);
-							cout << "\nEl simbolo '" << symbol->toString() << "' se agrego correctamente!\n";
+							cout << "\nEl símbolo '" << symbol->toString() << "' se agregó correctamente!\n";
 							break;
 						}
 						case 2: {//“Sacar” (pop)  
 							Object* element = pila->saca();
 							symbol = dynamic_cast<Simbolo*>(element);
 
-							cout << "\nEl simbolo '" << symbol->toString() << "' fue removido exitosamente!\n";
+							cout << "\nEl símbolo '" << symbol->toString() << "' fue removido éxitosamente!\n";
 							break;
 						}
 						case 3: {//Ver Tope (top)  
@@ -238,7 +238,7 @@ int main(int argc, char** argv) {
 						}
 						case 4: {//Verificar si está vacía  
 							string text = "";
-							pila->isEmpty() ? text = "\nLa pila esta vacia\n" : text = "\nLa pila esta llena\n";
+							pila->isEmpty() ? text = "\nEstá Vacía\n" : text = "\nNo Está Vacía\n";
 							cout << text;
 							break;
 						}
@@ -249,10 +249,10 @@ int main(int argc, char** argv) {
 						}
 						case 6: {//borrar todos los elementos
 							pila->anula();
-							cout << "\nLos elementos han sido borrados con exito!\n";
+							cout << "\nLos elementos han sido borrados con éxito!\n";
 							break;
 						}
-						default: {cout << "\nOpción no valida\n"; }
+						default: {cout << "\nOpción no válida\n"; }
 
 						}
 						opcPila = menuOpcPila();
@@ -262,7 +262,7 @@ int main(int argc, char** argv) {
 					inLoop = false;
 				}
 				else if (tipo > 3) {
-					cout << "\nOpción no valida\n";
+					cout << "\nOpción no válida\n";
 				}
 			}
 			break;
@@ -304,7 +304,7 @@ int main(int argc, char** argv) {
 							if(!cola->isEmpty())
 								cout << "Alumno " << cola->saca_de_cola()->toString() << " ha sido sacado\n";
 							else
-								cout << "La cola esta vacia\n";
+								cout << "La cola está vacía\n";
 							break;
 						}
 						case 3: {
@@ -330,7 +330,7 @@ int main(int argc, char** argv) {
 							cout << "La cola ha sido vaciada\n";
 							break;
 						}
-						default: {cout << "\nOpción no valida\n"; }
+						default: {cout << "\nOpción no válida\n"; }
 
 						}
 						opcCola = menuOpcCola();
@@ -341,13 +341,13 @@ int main(int argc, char** argv) {
 					inLoop = false;
 				}
 				else if (tipo > 3) {
-					cout << "\nOpción no valida\n";
+					cout << "\nOpción no válida\n";
 				}
 			}
 			break;
 		}
 		case 4: {break; }
-		default: {cout << "\nOpción no valida\n"; }
+		default: {cout << "\nOpción no válida\n"; }
 		}
 	}
 
