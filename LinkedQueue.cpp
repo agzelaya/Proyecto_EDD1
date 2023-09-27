@@ -54,7 +54,10 @@ void LinkedQueue::imprime_cola() {
 	if (front != NULL) {
 		temp = front;
 		while (hasBack) {
-			cout << "[ " << temp->getItem()->toString() << "]" << " <= ";
+			if(temp->getBack() != NULL)
+				cout << "[ " << temp->getItem()->toString() << "]" << " <= ";
+			else
+				cout << "[ " << temp->getItem()->toString() << "]";
 			if (temp->getBack() != NULL) { temp = temp->getBack(); }
 			else {
 				hasBack = false;
