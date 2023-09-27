@@ -18,6 +18,7 @@ LinkedList::~LinkedList()
 void LinkedList::anula()
 {
 	delete inicio; 
+	n = 0;
 }
 
 bool LinkedList::inserta(Object* item, int pos)
@@ -26,20 +27,28 @@ bool LinkedList::inserta(Object* item, int pos)
 	Nodo* temp = inicio;
 	if (pos_code>=0&&pos_code<=n)
 	{
-		Nodo* newNode = NULL;
+		Nodo* newNode = new Nodo(); 
 		newNode->setItem(item);
-		int i = 0; 
-		n++; 
+		int i = 0;  
 		while (i!=pos_code) 
 		{
 			temp = temp->getNext();
 			i++;
 		}
-		newNode->setBack(temp->getBack());
-		newNode->getBack()->setNext(newNode); 
-		newNode->setNext(temp); 
-		temp->setBack(newNode);
-		NodesDefine(temp);
+		if (inicio)
+		{
+			newNode->setBack(temp->getBack());
+			newNode->setNext(temp); 
+			newNode->getBack()->setNext(newNode);
+			temp->setBack(newNode);
+			NodesDefine(temp); 
+		}
+		else {
+			inicio = newNode;
+			final = newNode;  
+		}
+		
+		n++;
 		return true; 
 	}
 	else {
@@ -79,7 +88,7 @@ Object* LinkedList::anterior(int pos)
 void LinkedList::append(Object* item)//
 {
 	Nodo* temp = inicio;
-	Nodo* newNode = NULL;
+	Nodo* newNode = new Nodo();
 	newNode->setItem(item);
 	n++;
 	newNode->setBack(final);
