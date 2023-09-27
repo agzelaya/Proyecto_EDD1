@@ -15,7 +15,7 @@ ArrayList::ArrayList()
 ArrayList::~ArrayList()
 {
 	//libera el contenido de las casillas
-	for(int i=0; i<n; i++){
+	for(int i=0; i<=n; i++){
 		if(array[i]){
 			delete array[i];
 			array[i] =NULL;
@@ -27,13 +27,14 @@ ArrayList::~ArrayList()
 
 void ArrayList::anula()
 {
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i <= n; i++)
 	{
 		if (array[i]) {
 			delete array[i];
 			array[i] = NULL;
 		}
 	}
+	n = 0;
 }
 
 bool ArrayList::inserta(Object* elemento, int pos_list)
@@ -51,6 +52,7 @@ bool ArrayList::inserta(Object* elemento, int pos_list)
 					n++;
 				}
 				else {
+					n++;
 					for (int j = n; j >=i; j--)
 					{
 						if (j!=i)
@@ -76,7 +78,7 @@ bool ArrayList::inserta(Object* elemento, int pos_list)
 Object* ArrayList::siguiente(int pos_list)
 {
 	int pos_code = pos_list - 1;
-	if (array[pos_code+1])
+	if (array[pos_code+1]&&pos_code<n)
 	{
 		return array[pos_code + 1];
 	}
@@ -88,7 +90,7 @@ Object* ArrayList::siguiente(int pos_list)
 Object* ArrayList::anterior(int pos_list)
 {
 	int pos_code = pos_list - 1;
-	if (pos_code>0)
+	if (pos_code>0&&pos_code<=n)
 	{
 		if (array[pos_code - 1])
 		{
@@ -102,8 +104,8 @@ Object* ArrayList::anterior(int pos_list)
 
 void ArrayList::append(Object* elemento)
 {
-	array[n] = elemento;
 	n++;
+	array[n] = elemento;
 }
 
 void ArrayList::imprimir_lista()
@@ -125,13 +127,12 @@ bool ArrayList::suprime(int pos_list)
 {
 	int pos_code = pos_list - 1;
 	bool deleted = false;
-	if (pos_code <= n)
+	if (pos_code < n)
 	{
 		for (int i = 0; i <= n; i++)
 		{
 			if (i == pos_code)
 			{
-				delete array[i];
 				array[i] = NULL;
 
 				if (i != n)
@@ -140,16 +141,17 @@ bool ArrayList::suprime(int pos_list)
 					array[i] = array[i + 1];
 				}
 			}
-			if (i == n)
-			{
-				delete array[i];
-				array[i] = NULL;
-			}
 			if (deleted && i < n)
 			{
 				array[i] = array[i + 1];
 			}
+			if (i == n)
+			{
+				array[i] = NULL;
+			}
+			
 		}
+		n--;
 		return true;
 	}
 	else {
@@ -161,7 +163,7 @@ bool ArrayList::suprime(int pos_list)
 Object* ArrayList::recupera(int pos_list)
 {
 	int pos_code = pos_list - 1;
-	if (pos_code>0)
+	if (pos_code>=0)
 	{
 		return array[pos_code];
 	}
@@ -174,7 +176,7 @@ Object* ArrayList::recupera(int pos_list)
 int ArrayList::localiza(Object* elemento)
 {
 	bool localizado = false;
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i <= n; i++)
 	{
 		if (array[i]->equals(elemento))
 		{
