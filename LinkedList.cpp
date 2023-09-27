@@ -82,13 +82,20 @@ Object* LinkedList::siguiente(int pos)
 	int pos_code = pos - 1;
 	Nodo* temp = inicio;
 	int i = 0;
-	while (i != pos_code)
+	if (pos_code>=0&&pos_code<n-1&&inicio)
 	{
-		temp = temp->getNext();
-		i++;
+		while (i != pos_code)
+		{
+			temp = temp->getNext();
+			i++;
+		}
+		Nodo* siguiente = temp->getNext();
+		return siguiente->getItem();
 	}
-	Nodo* siguiente = temp->getNext();
-	return siguiente->getItem();
+	else {
+		return nullptr; 
+	}
+	
 }
 /*Muestra el elemento anterior de la posicion ingresada*/
 Object* LinkedList::anterior(int pos)
@@ -96,13 +103,19 @@ Object* LinkedList::anterior(int pos)
 	int pos_code = pos - 1;
 	Nodo* temp = inicio;
 	int i = 0;
-	while (i != pos_code)
+	if (pos_code>0&&pos_code<n&&inicio)
 	{
-		temp = temp->getNext();
-		i++;
+		while (i != pos_code)
+		{
+			temp = temp->getNext();
+			i++;
+		}
+		Nodo* anterior = temp->getBack();
+		return anterior->getItem();
 	}
-	Nodo* anterior = temp->getBack();
-	return anterior->getItem();
+	else {
+		return nullptr;
+	}
 }
 /*Agrega elementos al final de la lista*/
 void LinkedList::append(Object* item)//
@@ -186,13 +199,20 @@ Object* LinkedList::recupera(int pos)//recupera cuando no encuentra elemento
 	int pos_code = pos - 1;
 	Nodo* temp = inicio;
 	int i = 0;
-	while (i != pos_code)
+	if (pos_code>=0&&pos_code<n&&inicio)
 	{
-		temp = temp->getNext();
-		i++;
+		cout << "@ ->" << pos_code << endl;
+		while (i != pos_code)
+		{
+			temp = temp->getNext();
+			i++;
+		}
+		Object* item = temp->getItem();
+		return item;
 	}
-	Object* item = temp->getItem();
-	return item; 
+	else {
+		return nullptr;
+	}
 }
 
 int LinkedList::localiza(Object* item)//Busca el item dado y retorna su posicion, de no ser encontrado retorna -1
