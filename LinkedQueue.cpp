@@ -64,7 +64,7 @@ void LinkedQueue::imprime_cola() {
 		cout << endl;
 	}
 	else {
-		cout << "\nLa cola esta vacia\n";
+		cout << "La cola esta vacia\n";
 	}
 }
 
