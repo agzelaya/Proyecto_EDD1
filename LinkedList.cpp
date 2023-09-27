@@ -24,7 +24,7 @@ bool LinkedList::inserta(Object* item, int pos)
 {
 	int pos_code = pos - 1;
 	Nodo* temp = inicio;
-	if (pos>=1&&pos<=n)
+	if (pos_code>=0&&pos_code<=n)
 	{
 		Nodo* newNode = NULL;
 		newNode->setItem(item);
@@ -167,7 +167,7 @@ Object* LinkedList::primero()
 
 bool LinkedList::vacia()
 {
-	if (inicio->getItem())
+	if (inicio)
 	{
 		return true;
 	}else{ 

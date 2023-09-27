@@ -15,7 +15,7 @@ ArrayList::ArrayList()
 ArrayList::~ArrayList()
 {
 	//libera el contenido de las casillas
-	for(int i=0; i<=n; i++){
+	for(int i=0; i<n; i++){
 		if(array[i]){
 			delete array[i];
 			array[i] =NULL;
@@ -27,7 +27,7 @@ ArrayList::~ArrayList()
 
 void ArrayList::anula()
 {
-	for (int i = 0; i <= n; i++)
+	for (int i = 0; i < n; i++)
 	{
 		if (array[i]) {
 			delete array[i];
@@ -39,19 +39,18 @@ void ArrayList::anula()
 bool ArrayList::inserta(Object* elemento, int pos_list)
 {
 	int pos_code = pos_list - 1;
-	if (pos_code<=n+1)
+	if (pos_code<n+1)
 	{
-		for (int i = 0; i <= n+1; i++)
+		for (int i = 0; i <= n; i++)
 		{
 			if (i==pos_code)
 			{
 				if (!array[i])
 				{
-					n++;
 					array[i] = elemento; 
+					n++;
 				}
 				else {
-					n++;
 					for (int j = n; j >=i; j--)
 					{
 						if (j!=i)
@@ -63,8 +62,8 @@ bool ArrayList::inserta(Object* elemento, int pos_list)
 						}
 						
 					}
-					break;
 				}
+				break;
 			}
 		}
 		return true;
@@ -103,8 +102,8 @@ Object* ArrayList::anterior(int pos_list)
 
 void ArrayList::append(Object* elemento)
 {
-	n++;
 	array[n] = elemento;
+	n++;
 }
 
 void ArrayList::imprimir_lista()
@@ -175,7 +174,7 @@ Object* ArrayList::recupera(int pos_list)
 int ArrayList::localiza(Object* elemento)
 {
 	bool localizado = false;
-	for (int i = 0; i <= n; i++)
+	for (int i = 0; i < n; i++)
 	{
 		if (array[i]->equals(elemento))
 		{

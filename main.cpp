@@ -89,7 +89,7 @@ int main(int argc, char** argv) {
 						lista = new ArrayList(); 
 					}
 					else {
-						//TDALista* lista = new LinkedList();
+						lista = new LinkedList();
 					}
 					Alumno* alumno = NULL; 
 					int opcLista = menuOpcLista();
