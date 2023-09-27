@@ -419,7 +419,11 @@ int main(int argc, char** argv) {
 						case 1: {
 							string id;
 							cout << "Ingrese el id del alumno: ";
-							cin >> id;
+							do
+							{
+								cout << endl;
+								cin >> id;
+							} while (!(number(id)));
 
 							string nombre;
 							cout << "Ingrese el nombre del alumno: ";
