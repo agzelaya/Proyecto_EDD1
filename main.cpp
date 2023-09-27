@@ -161,9 +161,10 @@ int main(int argc, char** argv) {
 									cout << endl;
 									cin >> id;
 									alumno = new Alumno(nombre, id); 
-								} while (!(number(id)) || !(validNumber(lista, alumno, tipo))); 
+								} while (!(number(id)) || !(validNumber(lista, alumno, tipo)));
 								cout << "Ingrese el nombre del alumno: ";
-								cin >> nombre;
+								cin.ignore();
+								getline(cin, nombre);
 								cout << "Ingrese la posición a donde desea agregar elemento: ";
 								do {
 									cin >> pos;
@@ -407,20 +408,21 @@ int main(int argc, char** argv) {
 						cola = new LinkedQueue();
 					}
 
-					Alumno* alumno = NULL;
+					
 					int opcCola = menuOpcCola();
 					while (opcCola != 7) {
 						switch (opcCola) {
 						case 1: {
-							string id = "";
-							string nombre = "";
+							string id;
 							cout << "Ingrese el id del alumno: ";
 							cin >> id;
 
+							string nombre;
 							cout << "Ingrese el nombre del alumno: ";
-							cin >> nombre;
-
-							alumno = new Alumno(nombre, id);
+							cin.ignore();
+							getline(cin, nombre);
+							
+							Alumno *alumno = new Alumno(nombre, id);
 							cola->pone_en_cola(alumno);
 							break;
 						}
