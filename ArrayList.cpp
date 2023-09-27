@@ -119,7 +119,6 @@ void ArrayList::imprimir_lista()//Imprime lista en el formato dado
 		for (int i = 0; i < n; i++) {
 			cout<<" -> " << array[i]->toString()<<endl; 
 		}
-		cout << endl;
 	}
 	else {
 		cout << "$ La lista esta vacia\n";

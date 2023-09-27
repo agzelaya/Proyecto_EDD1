@@ -150,7 +150,7 @@ bool LinkedList::suprime(int pos)//
 {
 	int pos_code = pos - 1;
 	Nodo* temp = inicio;
-	if (pos_code>=0 && pos_code<=n)
+	if (pos_code>=0 && pos_code<n)
 	{
 		int i = 0;
 		while (i != pos_code)
@@ -201,7 +201,6 @@ Object* LinkedList::recupera(int pos)//recupera cuando no encuentra elemento
 	int i = 0;
 	if (pos_code>=0&&pos_code<n&&inicio)
 	{
-		cout << "@ ->" << pos_code << endl;
 		while (i != pos_code)
 		{
 			temp = temp->getNext();

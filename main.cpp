@@ -146,6 +146,7 @@ int main(int argc, char** argv) {
 
 
 					while (opcLista != 10) {
+						cout << endl; 
 						switch (opcLista) {
 						case 1: {//insertar elemento insertar
 							bool resp = true; 
@@ -177,11 +178,11 @@ int main(int argc, char** argv) {
 									cout << "Se agregó alumno correctamente" << endl;
 								}
 								else {
-									cout << "! Error al agregar alumno, posición no valida" << endl;
+									cout << "! Error al agregar alumno, posición no válida" << endl;
 								}
 
 								//Respuesta de Usuario 
-								cout << "¿Desea introducir otro elemento? [0:no/1:si]: ";
+								cout << "\n¿Desea introducir otro elemento? [0:no/1:si]: ";
 								cin >> resp;
 							} while (resp);
 							
@@ -211,7 +212,7 @@ int main(int argc, char** argv) {
 								cout << "El alumno "<<nombre<<" fue encontrado en la posición: "<<retorno << endl;
 							}
 							else {
-								cout << "$ El alumno no fue encontrado en la lista" << endl;
+								cout << "! El alumno no fue encontrado en la lista" << endl;
 							}
 							break;
 						}
@@ -228,7 +229,7 @@ int main(int argc, char** argv) {
 								cout << "Se borró alumno correctamente" << endl;
 							}
 							else {
-								cout << "! Error al borrar alumno, posición no valida" << endl;
+								cout << "! Error al borrar alumno, posición no válida" << endl;
 							}
 							break;
 						}
@@ -236,7 +237,7 @@ int main(int argc, char** argv) {
 							bool retorno = lista->vacia(); 
 							if (retorno)
 							{
-								cout << "La lista está vacia" << endl;
+								cout << "La lista está vacía" << endl;
 							}
 							else {
 								cout << "La lista tiene "<<lista->getSize()<<" elemento(s)" << endl;
@@ -254,10 +255,10 @@ int main(int argc, char** argv) {
 							if (retorno)
 							{
 								
-								cout<<"Elemento: \n" << retorno->toString() << endl;
+								cout<<"\nElemento:\n -> " << retorno->toString() << endl;
 							}
 							else {
-								cout << "! Posición no valida"<<endl; 
+								cout << "! Posición no válida"<<endl; 
 							}
 							break;
 						}
@@ -272,10 +273,10 @@ int main(int argc, char** argv) {
 							if (retorno)
 							{
 
-								cout << "Siguiente elemento: \n" << retorno->toString() << endl;
+								cout << "\nSiguiente elemento:\n -> " << retorno->toString() << endl;
 							}
 							else {
-								cout << "$ El espacio siguiente está vacío" << endl;
+								cout << "! El espacio siguiente está vacío" << endl;
 							}
 							break;
 						}
@@ -289,10 +290,10 @@ int main(int argc, char** argv) {
 							if (retorno)
 							{
 
-								cout << "Elemento anterior: \n" << retorno->toString() << endl;
+								cout << "\nElemento anterior:\n -> " << retorno->toString() << endl;
 							}
 							else {
-								cout << "$ El espacio anterior está vacío" << endl;
+								cout << "! El espacio anterior está vacío" << endl;
 							}
 							break;
 						}
