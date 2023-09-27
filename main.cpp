@@ -47,7 +47,7 @@ int menuTipoPila() {
 
 int menuOpcPila() {
 	int x;
-	cout << "\nOperaciones de Pilas\n  1. “Empujar”(push)\n  2. “Sacar”(pop)\n  3. Ver Tope(top)\n"
+	cout << "\nOperaciones de Pilas\n  1. “Empujar” (push)\n  2. “Sacar” (pop)\n  3. Ver Tope (top)\n"
 		<< "  4. Verificar si está vacía\n  5. Imprimir elementos\n  6. Borrar todos los elementos\n  7. Regresar al Menú Anterior\nIngrese la opcion: ";
 	cin >> x;
 	return x;
@@ -62,7 +62,7 @@ int menuTipoCola() {
 
 int menuOpcCola() {
 	int x;
-	cout << "\nOperaciones de Colas\n  1. \"Encolar\"(queue)\n  2. \"Desencolar\"(dequeue)\n  3. Ver Frente(peek)\n"
+	cout << "\nOperaciones de Colas\n  1. \"Encolar\" (queue)\n  2. \"Desencolar\" (dequeue)\n  3. Ver Frente (peek)\n"
 		<< "  4. Verificar si está vacía\n  5. Imprimir elementos\n  6. Borrar los elementos\n  7. Regresar al Menú Anterior\nIngrese la opcion: ";
 	cin >> x;
 	return x;
@@ -200,11 +200,10 @@ int main(int argc, char** argv) {
 				tipo = menuTipoPila();
 				TDAPila* pila = NULL;
 				if (tipo == 1 || tipo == 2) {
-					if (tipo == 1) {
+					if (tipo == 1) 
 						pila = new ArrayStack();
-					}else {
+					else 
 						pila = new LinkedStack();
-					}
 
 					Simbolo* symbol = NULL;
 					int opcPila = menuOpcPila();
@@ -222,8 +221,10 @@ int main(int argc, char** argv) {
 						case 2: {//“Sacar” (pop)  
 							Object* element = pila->saca();
 							symbol = dynamic_cast<Simbolo*>(element);
-
-							cout << "\nEl símbolo '" << symbol->toString() << "' fue removido éxitosamente!\n";
+							if (symbol)
+								cout << "\nEl símbolo '" << symbol->toString() << "' fue removido éxitosamente!\n";
+							else
+								cout << "\nLa pila ya está vacía.";
 							break;
 						}
 						case 3: {//Ver Tope (top)  

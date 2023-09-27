@@ -19,7 +19,7 @@ void LinkedStack::anula() {//elimina los nodos
 	}
 }
 
-Object* LinkedStack::tope() {//retorna el primer nodo "el tope" de la pila
+Object* LinkedStack::tope() {//retorna el primer nodo/el tope de la pila
 	if (inicio)
 		return inicio->getItem();
 	else
@@ -52,7 +52,7 @@ Object* LinkedStack::saca() { //elimina el primer nodo y lo retorna
 		return NULL;
 }
 
-void LinkedStack::imprime_pila() {//imprime todos los nodos de la pila (de izquierda a derecha)
+void LinkedStack::imprime_pila() {//imprime todos los nodos de la pila (de izquierda a derecha) e indica el nodo inicial
 	if (inicio) {
 		Nodo* temp = inicio;
 		cout << "\nPila: ";

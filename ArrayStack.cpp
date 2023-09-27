@@ -19,7 +19,7 @@ ArrayStack::~ArrayStack(){//libera el contenido de las casillas
 	delete[] array;
 }
 
-void ArrayStack::anula() {//elimina todos los elementos del arreglo
+void ArrayStack::anula() {//elimina todos los elementos de la pila
 	if (size != 0){
 		for (int i = size; i > 0; i--) {
 			delete array[i - 1];
@@ -35,12 +35,12 @@ Object* ArrayStack::tope() {//retorna el primer elemento "tope" de la pila
 		return NULL;
 }
 
-void ArrayStack::mete(Object* data) {//inserta un nuevo elemento a la pila 
+void ArrayStack::mete(Object* data) {//inserta un nuevo elemento a la pila
 	if (size!=capacidad){
 		size++;
 		array[size - 1] = data;
 	}else {
-		cout << "La pila está llena\n";
+		cout << "La pila esta llena\n";
 	}
 }
 
