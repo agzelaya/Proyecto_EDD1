@@ -35,10 +35,12 @@ void ArrayList::anula()
 		}
 	}
 	n = 0;
+	size=0;
 }
 
 bool ArrayList::inserta(Object* elemento, int pos_list)
 {
+	
 	int pos_code = pos_list - 1;
 	if (pos_code<n+1)
 	{
@@ -68,6 +70,7 @@ bool ArrayList::inserta(Object* elemento, int pos_list)
 				break;
 			}
 		}
+		size++;
 		return true;
 	}
 	else {
@@ -105,6 +108,7 @@ Object* ArrayList::anterior(int pos_list)
 void ArrayList::append(Object* elemento)
 {
 	n++;
+	size++;
 	array[n] = elemento;
 }
 
@@ -113,12 +117,12 @@ void ArrayList::imprimir_lista()
 	if (n > 0) {
 		cout << "Lista: " << endl;
 		for (int i = 0; i < n; i++) {
-			cout << ", " << array[i]->toString();
+			cout<<" -> " << array[i]->toString()<<endl; 
 		}
 		cout << endl;
 	}
 	else {
-		cout << "Lista esta vacia\n";
+		cout << "$ La lista esta vacia\n";
 	}
 	
 }
@@ -152,6 +156,7 @@ bool ArrayList::suprime(int pos_list)
 			
 		}
 		n--;
+		size--;
 		return true;
 	}
 	else {

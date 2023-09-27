@@ -27,9 +27,10 @@ class TDALista
 		virtual int localiza(Object*)=0;
 		virtual Object* primero()=0;
 		virtual bool vacia()=0;
-		
+		int getSize();
 		
 	protected:
+		int size=0; 
 };
 
 #endif

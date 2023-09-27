@@ -15,6 +15,42 @@
 #include "Simbolo.h"
 using namespace std;
 
+bool validacion(int resp) {//Metodo para validar que la posicion ingresada sea mayor o igual a 1
+	if (resp>=1)
+	{
+		return true;
+	}
+	else {
+		cout << "! La posición debe ser un número mayor o igual a 1, intente de nuevo: ";
+		return false;
+	}
+}
+bool number(string id) {// metodo que valida que solo se ingresen numeros
+	for (int i = 0; i < id.length(); i++)
+	{
+		char c = id[i];
+		if (c<48||c>57)
+		{
+			cout << "! Se debe digitar un código de números";
+			return false; 
+		}
+	}
+	return true; 
+}
+bool validNumber(TDALista* lista, Alumno* alumno) {//metodo que valida que el id de Alumno no se repita
+	int i = 1; 
+	while (lista->recupera(i)) {
+		Alumno* alumni = dynamic_cast<Alumno*>(lista->recupera(i));
+		if ((alumni->equals(alumno)))
+		{
+			cout << "! El código de números debe ser único";
+			return false; 
+		}
+		i++;
+	}
+	return true; 
+}
+
 int mainMenu() {
 	int x;
 	cout << "\nMenú Principal\n  1. Trabajar con Listas\n  2. Trabajar con Pilas\n  3. Trabajar con Colas\n  4. Salir\nIngrese la opcion: ";
@@ -97,21 +133,43 @@ int main(int argc, char** argv) {
 
 					while (opcLista != 10) {
 						switch (opcLista) {
-						case 1: {//insertar elemento ? append o insertar
+						case 1: {//insertar elemento insertar
+							bool resp = true; 
 							string id = "";
 							string nombre = "";
 							int pos; 
 
-							cout << "Ingrese el id del alumno: ";
-							cin >> id;
-							cout << "Ingrese el nombre del alumno: ";
-							cin >> nombre;
-							cout << "Ingrese la posición a donde desea agregar elemento: ";
-							cin >> pos;
+							do
+							{
+								cout << "Ingrese el ID del alumno: ";
+								do
+								{
+									cout << endl;
+									cin >> id;
+									alumno = new Alumno(nombre, id); 
+								} while (!(number(id)) || !(validNumber(lista, alumno))); 
+								cout << "Ingrese el nombre del alumno: ";
+								cin >> nombre;
+								cout << "Ingrese la posición a donde desea agregar elemento: ";
+								do {
+									cin >> pos;
+								} while (!(validacion(pos)));
 
-							alumno = new Alumno(nombre, id); 
-							bool retorno = lista->inserta(alumno, pos);
-							cout << retorno<<endl;
+								alumno = new Alumno(nombre, id);
+								bool retorno = lista->inserta(alumno, pos);
+								if (retorno)
+								{
+									cout << "Se agregó alumno correctamente" << endl;
+								}
+								else {
+									cout << "! Error al agregar alumno, posición no valida" << endl;
+								}
+
+								//Respuesta de Usuario 
+								cout << "¿Desea introducir otro elemento? [0:no/1:si]: ";
+								cin >> resp;
+							} while (resp);
+							
 							break;
 						}
 						case 2: {//imprimir elementos
@@ -122,54 +180,105 @@ int main(int argc, char** argv) {
 							string id = "";
 							string nombre = "";
 
-							cout << "Ingrese el id del alumno: ";
-							cin >> id;
-							cout << "Ingrese el nombre del alumno: ";
-							cin >> nombre;
+							cout << "Ingrese el ID del alumno: ";
+							do
+							{
+								cout << endl;
+								cin >> id;
+							} while (!(number(id)));
 
 							Alumno* alumno2 = new Alumno(nombre, id); 
 							int retorno = lista->localiza(alumno2); 
-							cout << retorno << endl;
+							if (retorno!=-1)
+							{
+								Alumno* alumni = dynamic_cast<Alumno*>(lista->recupera(retorno)); 
+								nombre = alumni->GetName();
+								cout << "El alumno "<<nombre<<" fue encontrado en la posición: "<<retorno << endl;
+							}
+							else {
+								cout << "$ El alumno no fue encontrado en la lista" << endl;
+							}
 							break;
 						}
 						case 4: {//borrar elemento -> suprime
 							int pos;
 							cout << "Ingrese la posición del elemento a borrar: ";
-							cin >> pos; 
+							do {
+								cin >> pos;
+							} while (!(validacion(pos))); 
 
 							bool retorno = lista->suprime(pos); 
-							cout << retorno << endl;
+							if (retorno)
+							{
+								cout << "Se borró alumno correctamente" << endl;
+							}
+							else {
+								cout << "! Error al borrar alumno, posición no valida" << endl;
+							}
 							break;
 						}
 						case 5: {//vacia
 							bool retorno = lista->vacia(); 
-							cout << retorno << endl;
+							if (retorno)
+							{
+								cout << "La lista está vacia" << endl;
+							}
+							else {
+								cout << "La lista tiene "<<lista->getSize()<<" elemento(s)" << endl;
+							}
 							break;
 						}
 						case 6: {//obtener elemento por posicion -> recupera
 							int pos;
 							cout << "Ingrese la posición del elemento: ";
-							cin >> pos;
+							do {
+								cin >> pos;
+							} while (!(validacion(pos)));
 
 							Object* retorno = lista->recupera(pos); 
-							cout << retorno->toString() << endl;
+							if (retorno)
+							{
+								
+								cout<<"Elemento: \n" << retorno->toString() << endl;
+							}
+							else {
+								cout << "! Posición no valida"<<endl; 
+							}
 							break;
 						}
 						case 7: {//siguiente
 							int pos;
 							cout << "Ingrese la posición del elemento: ";
-							cin >> pos;
+							do {
+								cin >> pos;
+							} while (!(validacion(pos)));
 
 							Object* retorno = lista->siguiente(pos); 
-							cout << retorno->toString() << endl;
+							if (retorno)
+							{
+
+								cout << "Siguiente elemento: \n" << retorno->toString() << endl;
+							}
+							else {
+								cout << "$ El espacio siguiente está vacío" << endl;
+							}
 							break;
 						}
 						case 8: {//anterior
 							int pos;
 							cout << "Ingrese la posicion del elemento: ";
-							cin >> pos;
+							do {
+								cin >> pos;
+							} while (!(validacion(pos)));
 							Object* retorno = lista->anterior(pos); 
-							cout << retorno->toString() << endl;
+							if (retorno)
+							{
+
+								cout << "Elemento anterior: \n" << retorno->toString() << endl;
+							}
+							else {
+								cout << "$ El espacio anterior está vacío" << endl;
+							}
 							break;
 						}
 						case 9: {//anula

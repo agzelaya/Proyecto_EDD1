@@ -19,6 +19,7 @@ void LinkedList::anula()
 {
 	delete inicio; 
 	n = 0;
+	size = 0;
 }
 
 bool LinkedList::inserta(Object* item, int pos)
@@ -67,6 +68,7 @@ bool LinkedList::inserta(Object* item, int pos)
 			}
 		}
 		n++;
+		size++;
 		return true; 
 	}
 	else {
@@ -108,6 +110,7 @@ void LinkedList::append(Object* item)//
 	Nodo* newNode = new Nodo();
 	newNode->setItem(item);
 	n++;
+	size++;
 	Nodo* temp_anterior = final;
 	newNode->setBack(temp_anterior);
 	temp_anterior->setNext(newNode);
@@ -120,12 +123,12 @@ void LinkedList::imprimir_lista()
 	if (n > 0) {
 		cout << "Lista: " << endl;
 		while (temp) {
-			cout << "->" << temp->getItem()->toString() <<endl; 
+			cout << " -> " << temp->getItem()->toString() <<endl; 
 			temp = temp->getNext();
 		}
 	}
 	else {
-		cout << "Lista esta vacia\n";
+		cout << "$ Lista esta vacia\n";
 	}
 	
 }
@@ -170,6 +173,7 @@ bool LinkedList::suprime(int pos)//
 			}
 		}
 		n--;
+		size--;
 		return true;
 	}
 	else {

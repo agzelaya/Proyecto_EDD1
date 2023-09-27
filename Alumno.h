@@ -7,6 +7,9 @@ public:
 	~Alumno();
 	virtual bool equals(Object*);
 	virtual string toString();
+	string GetID();
+	string GetName();
+	void SetName(string);
 protected:
 	string nombre, id;
 };

@@ -14,6 +14,21 @@ string Alumno::toString() {
 	return id + " : " + nombre + " ";
 }
 
+string Alumno::GetID()
+{
+	return id; 
+}
+
+string Alumno::GetName()
+{
+	return nombre;
+}
+
+void Alumno::SetName(string nombre)
+{
+	this->nombre = nombre;
+}
+
 
 Alumno::~Alumno() {
 	nombre = "";
