@@ -2,7 +2,7 @@
 
 //#define NULL 0
 
-ArrayList::ArrayList()
+ArrayList::ArrayList()//Constructor
 {
 	n=0;
 	capacidad=10000;
@@ -12,7 +12,7 @@ ArrayList::ArrayList()
 	
 }
 
-ArrayList::~ArrayList()
+ArrayList::~ArrayList()//Desctructor
 {
 	//libera el contenido de las casillas
 	for(int i=0; i<=n; i++){
@@ -25,7 +25,7 @@ ArrayList::~ArrayList()
 	delete[] array;
 }
 
-void ArrayList::anula()
+void ArrayList::anula()//Libera memoria al borrar elementos de la lista
 {
 	for (int i = 0; i <= n; i++)
 	{
@@ -38,7 +38,7 @@ void ArrayList::anula()
 	size=0;
 }
 
-bool ArrayList::inserta(Object* elemento, int pos_list)
+bool ArrayList::inserta(Object* elemento, int pos_list)//Inserta los elementos a la lista
 {
 	
 	int pos_code = pos_list - 1;
@@ -78,7 +78,7 @@ bool ArrayList::inserta(Object* elemento, int pos_list)
 	}
 }
 
-Object* ArrayList::siguiente(int pos_list)
+Object* ArrayList::siguiente(int pos_list)//Devuelve el elemento siguiente a la posicion dada
 {
 	int pos_code = pos_list - 1;
 	if (array[pos_code+1]&&pos_code<n)
@@ -90,7 +90,7 @@ Object* ArrayList::siguiente(int pos_list)
 	}
 }
 
-Object* ArrayList::anterior(int pos_list)
+Object* ArrayList::anterior(int pos_list)//Devuelve el elemento anterior a la posicion dada
 {
 	int pos_code = pos_list - 1;
 	if (pos_code>0&&pos_code<=n)
@@ -105,14 +105,14 @@ Object* ArrayList::anterior(int pos_list)
 	}
 }
 
-void ArrayList::append(Object* elemento)
+void ArrayList::append(Object* elemento)//Agrega el elemento al final de la lista
 {
 	n++;
 	size++;
 	array[n] = elemento;
 }
 
-void ArrayList::imprimir_lista()
+void ArrayList::imprimir_lista()//Imprime lista en el formato dado
 {
 	if (n > 0) {
 		cout << "Lista: " << endl;
@@ -127,7 +127,7 @@ void ArrayList::imprimir_lista()
 	
 }
 
-bool ArrayList::suprime(int pos_list)
+bool ArrayList::suprime(int pos_list)//Borra elementos de la lista
 {
 	int pos_code = pos_list - 1;
 	bool deleted = false;
@@ -165,7 +165,7 @@ bool ArrayList::suprime(int pos_list)
 }
 
 
-Object* ArrayList::recupera(int pos_list)
+Object* ArrayList::recupera(int pos_list)//Retorna un objeto de la posicion dada
 {
 	int pos_code = pos_list - 1;
 	if (pos_code>=0)
@@ -178,10 +178,10 @@ Object* ArrayList::recupera(int pos_list)
 	
 }
 
-int ArrayList::localiza(Object* elemento)
+int ArrayList::localiza(Object* elemento)//Busca la posicion en la lista del objeto dado, de no ser encontrado retorna -1 
 {
 	bool localizado = false;
-	for (int i = 0; i <= n; i++)
+	for (int i = 0; i < n; i++)
 	{
 		if (array[i]->equals(elemento))
 		{
@@ -196,12 +196,12 @@ int ArrayList::localiza(Object* elemento)
 	
 }
 
-Object* ArrayList::primero()
+Object* ArrayList::primero()//devuelve 1er elemento 
 {
 	return array[0];
 }
 
-bool ArrayList::vacia()
+bool ArrayList::vacia()//Rebisa si lista esta o no vacia
 {
 	if (!array[0]) {
 		return true;

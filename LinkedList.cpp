@@ -2,26 +2,26 @@
 
 #define NULL 0
 
-LinkedList::LinkedList()
+LinkedList::LinkedList()//Constructor
 {
 	inicio=NULL;
 	final=NULL;
 	n=0;
 }
 
-LinkedList::~LinkedList()
+LinkedList::~LinkedList()//Destructor
 {
 	if(inicio)
 		delete inicio;
 }
 
-void LinkedList::anula()
+void LinkedList::anula()//borra todos los elementos de lista y libera memoria
 {
 	delete inicio; 
 	n = 0;
 	size = 0;
 }
-
+/*Agrega elementos a la lista acorde a la posicion y de este se modifican el nodo inicial y final*/
 bool LinkedList::inserta(Object* item, int pos)
 {
 	int pos_code = pos - 1;
@@ -76,7 +76,7 @@ bool LinkedList::inserta(Object* item, int pos)
 	}
 	
 }
-
+/*Muestra el elemento siguiente de la posicion ingresada*/
 Object* LinkedList::siguiente(int pos)
 {
 	int pos_code = pos - 1;
@@ -90,7 +90,7 @@ Object* LinkedList::siguiente(int pos)
 	Nodo* siguiente = temp->getNext();
 	return siguiente->getItem();
 }
-
+/*Muestra el elemento anterior de la posicion ingresada*/
 Object* LinkedList::anterior(int pos)
 {
 	int pos_code = pos - 1;
@@ -104,7 +104,7 @@ Object* LinkedList::anterior(int pos)
 	Nodo* anterior = temp->getBack();
 	return anterior->getItem();
 }
-
+/*Agrega elementos al final de la lista*/
 void LinkedList::append(Object* item)//
 {
 	Nodo* newNode = new Nodo();
@@ -116,7 +116,7 @@ void LinkedList::append(Object* item)//
 	temp_anterior->setNext(newNode);
 	final = newNode; 
 }
-
+/*Imprime elementos de la lista en su orden actual*/
 void LinkedList::imprimir_lista()
 {
 	Nodo* temp = inicio; 
@@ -132,7 +132,7 @@ void LinkedList::imprimir_lista()
 	}
 	
 }
-
+//Borra elementos de la lista acorde a la posicion
 bool LinkedList::suprime(int pos)//
 {
 	int pos_code = pos - 1;
@@ -181,7 +181,7 @@ bool LinkedList::suprime(int pos)//
 	}
 }
 
-Object* LinkedList::recupera(int pos)
+Object* LinkedList::recupera(int pos)//recupera cuando no encuentra elemento 
 {
 	int pos_code = pos - 1;
 	Nodo* temp = inicio;
@@ -191,15 +191,15 @@ Object* LinkedList::recupera(int pos)
 		temp = temp->getNext();
 		i++;
 	}
-
-	return temp->getItem();
+	Object* item = temp->getItem();
+	return item; 
 }
 
-int LinkedList::localiza(Object* item)//
+int LinkedList::localiza(Object* item)//Busca el item dado y retorna su posicion, de no ser encontrado retorna -1
 {
 	Nodo* temp = inicio; 
 	int i = 0;
-	while (temp->getNext())
+	while (temp)
 	{
 		if (temp->getItem()->equals(item))
 		{
@@ -212,7 +212,7 @@ int LinkedList::localiza(Object* item)//
 	return -1;
 }
 
-Object* LinkedList::primero()
+Object* LinkedList::primero()//el primer elemento de la lista
 {
 	return inicio->getItem();
 }

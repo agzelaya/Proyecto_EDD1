@@ -37,18 +37,32 @@ bool number(string id) {// metodo que valida que solo se ingresen numeros
 	}
 	return true; 
 }
-bool validNumber(TDALista* lista, Alumno* alumno) {//metodo que valida que el id de Alumno no se repita
+bool validNumber(TDALista* lista, Alumno* alumno, int type) {//metodo que valida que el id de Alumno no se repita
 	int i = 1; 
-	while (lista->recupera(i)) {
-		Alumno* alumni = dynamic_cast<Alumno*>(lista->recupera(i));
-		if ((alumni->equals(alumno)))
+	if (type ==1)
+	{
+		while ((lista->recupera(i))) {
+			Alumno* alumni = dynamic_cast<Alumno*>(lista->recupera(i));
+			if ((alumni->equals(alumno)))
+			{
+				cout << "! El código de números debe ser único";
+				return false;
+			}
+			i++;
+		}
+		return true;
+	}
+	else {
+		if (lista->localiza(alumno)!=-1)
 		{
 			cout << "! El código de números debe ser único";
 			return false; 
 		}
-		i++;
+		else {
+			return true;
+		}
 	}
-	return true; 
+	
 }
 
 int mainMenu() {
@@ -147,7 +161,7 @@ int main(int argc, char** argv) {
 									cout << endl;
 									cin >> id;
 									alumno = new Alumno(nombre, id); 
-								} while (!(number(id)) || !(validNumber(lista, alumno))); 
+								} while (!(number(id)) || !(validNumber(lista, alumno, tipo))); 
 								cout << "Ingrese el nombre del alumno: ";
 								cin >> nombre;
 								cout << "Ingrese la posición a donde desea agregar elemento: ";
@@ -172,13 +186,13 @@ int main(int argc, char** argv) {
 							
 							break;
 						}
-						case 2: {//imprimir elementos
+						case 2: {//imprime los elementos
 							lista->imprimir_lista();
 							break;
 						}
-						case 3: {//buscar elemento -> localiza
+						case 3: {//busca un elemento
 							string id = "";
-							string nombre = "";
+							string nombre = " ";
 
 							cout << "Ingrese el ID del alumno: ";
 							do
@@ -200,7 +214,7 @@ int main(int argc, char** argv) {
 							}
 							break;
 						}
-						case 4: {//borrar elemento -> suprime
+						case 4: {//borra elemento 
 							int pos;
 							cout << "Ingrese la posición del elemento a borrar: ";
 							do {
@@ -217,7 +231,7 @@ int main(int argc, char** argv) {
 							}
 							break;
 						}
-						case 5: {//vacia
+						case 5: {//mira si la lista esta vacia
 							bool retorno = lista->vacia(); 
 							if (retorno)
 							{
@@ -246,7 +260,7 @@ int main(int argc, char** argv) {
 							}
 							break;
 						}
-						case 7: {//siguiente
+						case 7: {//siguiente elemento de posicion
 							int pos;
 							cout << "Ingrese la posición del elemento: ";
 							do {
@@ -264,9 +278,9 @@ int main(int argc, char** argv) {
 							}
 							break;
 						}
-						case 8: {//anterior
+						case 8: {//elemento anterior de posicion
 							int pos;
-							cout << "Ingrese la posicion del elemento: ";
+							cout << "Ingrese la posición del elemento: ";
 							do {
 								cin >> pos;
 							} while (!(validacion(pos)));
@@ -281,7 +295,7 @@ int main(int argc, char** argv) {
 							}
 							break;
 						}
-						case 9: {//anula
+						case 9: {//eliminar elementos de la lista
 							lista->anula();
 							break;
 						}
