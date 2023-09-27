@@ -17,6 +17,7 @@ LinkedList::~LinkedList()
 
 void LinkedList::anula()
 {
+	delete inicio; 
 }
 
 bool LinkedList::inserta(Object* item, int pos)
@@ -47,47 +48,132 @@ bool LinkedList::inserta(Object* item, int pos)
 	
 }
 
-Object* LinkedList::siguiente(int)
+Object* LinkedList::siguiente(int pos)
 {
-	return nullptr;
+	int pos_code = pos - 1;
+	Nodo* temp = inicio;
+	int i = 0;
+	while (i != pos_code)
+	{
+		temp = temp->getNext();
+		i++;
+	}
+	
+	return temp->getNext()->getItem();
 }
 
-Object* LinkedList::anterior(int)
+Object* LinkedList::anterior(int pos)
 {
-	return nullptr;
+	int pos_code = pos - 1;
+	Nodo* temp = inicio;
+	int i = 0;
+	while (i != pos_code)
+	{
+		temp = temp->getNext();
+		i++;
+	}
+
+	return temp->getBack()->getItem(); 
 }
 
-void LinkedList::append(Object*)
+void LinkedList::append(Object* item)//
 {
+	Nodo* temp = inicio;
+	Nodo* newNode = NULL;
+	newNode->setItem(item);
+	n++;
+	newNode->setBack(final);
+	final->setNext(newNode);
+	final = newNode; 
 }
 
 void LinkedList::imprimir_lista()
 {
+	Nodo* temp = inicio; 
+	if (n > 0) {
+		cout << "Lista: " << endl;
+		while (temp->getNext()) {
+			cout << "->" << temp->getItem()->toString() <<endl; 
+			temp = temp->getNext();
+		}
+		cout << endl;
+	}
+	else {
+		cout << "Lista esta vacia\n";
+	}
+	
 }
 
-bool LinkedList::suprime(int)
+bool LinkedList::suprime(int pos)
 {
-	return false;
+	int pos_code = pos - 1;
+	Nodo* temp = inicio;
+	if (pos >= 1 && pos < n)
+	{
+		int i = 0;
+		n--;
+		while (i != pos_code)
+		{
+			temp = temp->getNext();
+			i++;
+		}
+		temp->getNext()->setBack(temp->getBack());
+		temp->getBack()->setNext(temp->getNext());
+		temp->setBack(nullptr);
+		temp->setNext(nullptr);
+		NodesDefine(temp);
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 
-Object* LinkedList::recupera(int)
+Object* LinkedList::recupera(int pos)
 {
-	return nullptr;
+	int pos_code = pos - 1;
+	Nodo* temp = inicio;
+	int i = 0;
+	while (i != pos_code)
+	{
+		temp = temp->getNext();
+		i++;
+	}
+
+	return temp->getItem();
 }
 
-int LinkedList::localiza(Object*)
+int LinkedList::localiza(Object* item)//
 {
+	Nodo* temp = inicio; 
+	int i = 0;
+	while (temp->getNext())
+	{
+		if (temp->getItem()->equals(item))
+		{
+			return i;
+		}
+		temp = temp->getNext();
+		i++;
+	}
+
 	return 0;
 }
 
 Object* LinkedList::primero()
 {
-	return nullptr;
+	return inicio->getItem();
 }
 
 bool LinkedList::vacia()
 {
-	return false;
+	if (inicio->getItem())
+	{
+		return true;
+	}else{ 
+		return false; 
+	}
+	
 }
 
 void LinkedList::NodesDefine(Nodo* nodo) {
