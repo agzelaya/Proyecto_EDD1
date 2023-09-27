@@ -57,6 +57,9 @@ void ArrayQueue::anula() {
 			array[i] = NULL;
 		}
 	}
+	n = 0;
+	front = 0;
+	back = 0;
 }
 
 /*en el caso de que last este en la ultima posicion del array, coloca obj en frente

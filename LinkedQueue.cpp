@@ -14,6 +14,9 @@ Object* LinkedQueue::frente() {
 	if (front != NULL) {
 		temp = front;
 	}
+	else {
+		cout << "La cola esta vacia\n";
+	}
 	return temp->getItem();
 }
 
