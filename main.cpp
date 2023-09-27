@@ -224,7 +224,7 @@ int main(int argc, char** argv) {
 							if (symbol)
 								cout << "\nEl símbolo '" << symbol->toString() << "' fue removido éxitosamente!\n";
 							else
-								cout << "\nLa pila ya está vacía.";
+								cout << "\nNo hay elementos en la pila.\n";
 							break;
 						}
 						case 3: {//Ver Tope (top)  
