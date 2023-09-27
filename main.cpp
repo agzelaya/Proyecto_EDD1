@@ -334,10 +334,13 @@ int main(int argc, char** argv) {
 					int opcPila = menuOpcPila();
 					while (opcPila != 7) {
 						switch (opcPila) {
-						case 1: {//“Empujar” (push)  
+						case 1: {//“Empujar” (push) 
+							string cadena; 
 							char data; 
 							cout << "Ingrese el símbolo que quiere agregar: ";
-							cin >> data;
+							cin.ignore();
+							getline(cin, cadena); 
+							data = cadena[0];
 							symbol = new Simbolo(data);
 							pila->mete(symbol);
 							cout << "\nEl símbolo '" << symbol->toString() << "' se agregó correctamente!\n";
